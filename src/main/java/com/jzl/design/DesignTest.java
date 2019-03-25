@@ -31,5 +31,6 @@ public class DesignTest {
         CashContext cashContext = new CashContext("dazhe");
         double result = cashContext.getResult(1000);
         System.out.println("打折后价钱_" + result);
+        
     }
 }
