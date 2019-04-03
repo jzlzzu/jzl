@@ -1,5 +1,9 @@
 package com.jzl.design;
 
+import com.jzl.design.decorate.ConcreteDecorateA;
+import com.jzl.design.decorate.Clothes;
+import com.jzl.design.decorate.ConcreteDecorateB;
+import com.jzl.design.decorate.Person;
 import com.jzl.design.factory.Calculator;
 import com.jzl.design.factory.CalculatorFactory;
 import com.jzl.design.strategy.CashContext;
@@ -32,5 +36,22 @@ public class DesignTest {
         double result = cashContext.getResult(1000);
         System.out.println("打折后价钱_" + result);
         
+    }
+
+    /**
+     * 装饰者模式 : 不好理解啊
+     */
+    @Test
+    public void testDecorate() {
+        Person person = new Person("小明");
+        Clothes clothes = new Clothes();
+        ConcreteDecorateA concreteDecorateA = new ConcreteDecorateA();
+        ConcreteDecorateB concreteDecorateB = new ConcreteDecorateB();
+
+        clothes.decorate(person);
+        concreteDecorateA.decorate(clothes);
+        concreteDecorateB.decorate(concreteDecorateA);
+
+        concreteDecorateB.show();
     }
 }

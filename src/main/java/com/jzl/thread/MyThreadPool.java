@@ -34,6 +34,7 @@ public class MyThreadPool {
 
 
     public static void main(String[] args) {
+        threadPoolExecutor.allowCoreThreadTimeOut(false);
         //没有返回值
         threadPoolExecutor.execute(() -> {
             System.out.println("线程池测试");
