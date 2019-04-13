@@ -4,8 +4,8 @@ import com.jzl.design.decorate.ConcreteDecorateA;
 import com.jzl.design.decorate.Clothes;
 import com.jzl.design.decorate.ConcreteDecorateB;
 import com.jzl.design.decorate.Person;
-import com.jzl.design.factory.Calculator;
-import com.jzl.design.factory.CalculatorFactory;
+import com.jzl.design.simplefactory.Calculator;
+import com.jzl.design.simplefactory.CalculatorFactory;
 import com.jzl.design.strategy.CashContext;
 import org.junit.Test;
 
