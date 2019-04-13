@@ -20,4 +20,12 @@ spring:
       data-username: root
       data-password: passwd
       driver-class-name: com.mysql.jdbc.Driver
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*.xml
+  type-aliases-package: com.jzl.entity
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: ignored
+      table-underline: true
 
