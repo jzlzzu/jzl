@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /jzl
+  ssl:
+    key-store: classpath:server.keystore
+    key-alias: tomcat
+    enabled: true
+    key-store-password: 123456
+    key-store-type: jks
+spring:
+  datasource:
+    first:
+      url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+      data-username: root
+      data-password: passwd
+      driver-class-name: com.mysql.jdbc.Driver
+    second:
+      url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+      data-username: root
+      data-password: passwd
+      driver-class-name: com.mysql.jdbc.Driver
+
