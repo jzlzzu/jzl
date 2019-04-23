@@ -11,13 +11,20 @@ server:
 spring:
   datasource:
     first:
-      url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
       data-username: root
       data-password: passwd
       driver-class-name: com.mysql.jdbc.Driver
     second:
-      url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
       data-username: root
       data-password: passwd
       driver-class-name: com.mysql.jdbc.Driver
-
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*.xml
+  type-aliases-package: com.jzl.entity
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: ignored
+      table-underline: true
