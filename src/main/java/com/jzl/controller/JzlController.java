@@ -1,6 +1,7 @@
 package com.jzl.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,11 +21,15 @@ public class JzlController {
     @Autowired
     private HttpServletResponse response;
 
+    @Autowired
+    private Environment env;
+
     @GetMapping("get")
     public void jzlGet() throws IOException {
         OutputStream os = response.getOutputStream();
         os.write("E1111cba".getBytes());
         System.out.println("调用get方法");
+        System.out.println(env.getProperty("spring.datasource.first.jdbc-url"));
 //        return "getCC";
     }
 
