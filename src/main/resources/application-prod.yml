@@ -12,13 +12,13 @@ spring:
   datasource:
     first:
       jdbc-url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
-      data-username: root
-      data-password: passwd
+      username: root
+      password: passwd
       driver-class-name: com.mysql.jdbc.Driver
     second:
       jdbc-url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
-      data-username: root
-      data-password: passwd
+      username: root
+      password: passwd
       driver-class-name: com.mysql.jdbc.Driver
 mybatis-plus:
   mapper-locations: classpath*:mybatis/*.xml
