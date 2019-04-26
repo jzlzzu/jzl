@@ -2,10 +2,12 @@ package com.jzl.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -26,6 +28,11 @@ public class JzlController {
 
     @GetMapping("get")
     public void jzlGet() throws IOException {
+        String path = new ClassPathResource("server.keystore").getPath();
+        System.out.println(path);
+        String name = new File("src/main/resources/server.keystore").getName();
+        System.out.println("name"+ name);
+
         OutputStream os = response.getOutputStream();
         os.write("E1111cba".getBytes());
         System.out.println("调用get方法");

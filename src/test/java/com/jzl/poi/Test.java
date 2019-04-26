@@ -1,6 +1,7 @@
 package com.jzl.poi;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
 
 /**
  * @Author: jzl
@@ -12,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 public class Test {
     @org.junit.Test
     public void name() {
+        ClassPathResource classPathResource = new ClassPathResource("/quartz.properties");
+        String path = classPathResource.getPath();
         System.out.println("A".compareTo("a"));
     }
 }
