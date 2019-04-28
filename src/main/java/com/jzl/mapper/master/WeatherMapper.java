@@ -1,6 +1,6 @@
-package com.jzl.mapper;
+package com.jzl.mapper.master;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.jzl.entity.Weather;
 import org.apache.ibatis.annotations.Mapper;
 
