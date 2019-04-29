@@ -6,6 +6,8 @@ import com.jzl.entity.Weather;
 import com.jzl.mapper.master.WeatherMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -19,12 +21,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TestMybatisPlus {
+    Logger logger = LoggerFactory.getLogger(TestMybatisPlus.class);
 
     @Autowired
     private WeatherMapper weatherMapper;
 
     @Test
     public void testQuery() throws JsonProcessingException {
+
         Weather weather = weatherMapper.selectById(1);
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(weather));
