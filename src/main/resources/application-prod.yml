@@ -10,6 +10,7 @@ server:
     key-store-type: jks
 spring:
   datasource:
+    #多数据源配置
     first:
       jdbc-url: jdbc:mysql://127.0.0.1:3306/jzl?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false
       username: root
