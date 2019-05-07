@@ -22,4 +22,6 @@ mybatis-plus:
       id-type: auto
       field-strategy: ignored
       table-underline: true
+jzl: ceshi
+
 

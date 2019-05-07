@@ -1,5 +1,6 @@
 package com.jzl.controller;
 
+import com.jzl.application.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
@@ -27,8 +28,14 @@ public class JzlController {
     @Autowired
     private Environment env;
 
+
+    @Autowired
+    private Config config;
+
     @GetMapping("get")
     public void jzlGet() throws IOException {
+
+        System.out.println(config.getJzl());
         String path = new ClassPathResource("server.keystore").getPath();
         System.out.println(path);
         String name = new File("src/main/resources/server.keystore").getName();
