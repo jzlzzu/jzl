@@ -1,5 +1,8 @@
 package com.jzl.hash;
 
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+
 /**
  * @Author: jzl
  * @Description:
@@ -14,6 +17,9 @@ public class Test {
         long jzl1 = ConsistentHash.fnv1HashingAlg("jzl");
         System.out.println(jzl);
         System.out.println(jzl1);
+
+        System.out.println(HttpMethod.OPTIONS.name());;
+        System.out.println(HttpStatus.UNAUTHORIZED.value());;
     }
 
 }
