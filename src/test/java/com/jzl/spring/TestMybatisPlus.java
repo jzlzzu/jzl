@@ -1,5 +1,7 @@
 package com.jzl.spring;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.Weather;
@@ -29,9 +31,11 @@ public class TestMybatisPlus {
     @Test
     public void testQuery() throws JsonProcessingException {
 
-        Weather weather = weatherMapper.selectById(1);
+//        Weather weather = weatherMapper.selectById(1);
+        Page<Weather> weatherPage = new Page<>(1,5);
+        IPage<Weather> weatherIPage = weatherMapper.selectPage(weatherPage, null);
         ObjectMapper mapper = new ObjectMapper();
-        System.out.println(mapper.writeValueAsString(weather));
+        System.out.println(mapper.writeValueAsString(weatherIPage));
     }
 
 }

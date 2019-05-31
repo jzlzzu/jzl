@@ -12,7 +12,7 @@ import java.lang.annotation.Target;
  * @Modified By:
  */
 @Retention(value = RetentionPolicy.RUNTIME)
-@Target(value = {ElementType.FIELD})
+@Target(value = {ElementType.METHOD})
 public @interface IsNeeded {
 
     boolean isNeeded() default true;
