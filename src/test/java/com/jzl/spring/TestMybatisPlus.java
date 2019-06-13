@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @Author: jzl
  * @Description:
@@ -38,4 +41,10 @@ public class TestMybatisPlus {
         System.out.println(mapper.writeValueAsString(weatherIPage));
     }
 
+    @Test
+    public void test() {
+        Page<Map<String,Object>> page = new Page<>(1, 3);
+        List<Weather> lists = weatherMapper.lists(page);
+        System.out.println(lists);
+    }
 }
