@@ -23,7 +23,7 @@ public class LogAspect {
 
     @Around("method()")
     public Object log(ProceedingJoinPoint point) throws Throwable {
-        System.out.println("切面执行");
+        System.out.println("LogAspect 切面执行");
         return point.proceed();
 
     }

@@ -1,7 +1,7 @@
 package com.jzl.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jzl.aop.IsNeeded;
+import com.jzl.aop.LoginRequired;
 import com.jzl.application.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -41,7 +41,7 @@ public class JzlController {
     @Autowired
     private Config config;
 
-    @IsNeeded(isNeeded = true)
+    @LoginRequired(loginRequired = true)
     @GetMapping("get")
     public void jzlGet(@SessionAttribute(name="str",required = false) String str) throws IOException {
 

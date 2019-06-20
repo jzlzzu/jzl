@@ -13,8 +13,8 @@ import java.lang.annotation.Target;
  */
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = {ElementType.METHOD})
-public @interface IsNeeded {
+public @interface LoginRequired {
 
-    boolean isNeeded() default true;
+    boolean loginRequired() default false;
 
 }
