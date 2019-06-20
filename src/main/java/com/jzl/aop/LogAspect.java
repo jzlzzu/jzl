@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
- * @Author: jzl
+ * @Author: jzl 测试切面和切面表达式
  * @Description:
  * @Date: Created in 16:23 2019/5/30
  * @Modified By:

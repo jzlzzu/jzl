@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author: jzl
+ * @Author: jzl 注入配置文件到实体bean
  * @Description:
  * @Date: Created in 14:38 2019/5/8
  * @Modified By:
