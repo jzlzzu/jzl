@@ -3,13 +3,11 @@ package com.jzl.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.aop.LoginRequired;
 import com.jzl.application.Config;
+import com.jzl.entity.Jzl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -67,9 +65,9 @@ public class JzlController {
 //        return "getCC";
     }
 
-    @GetMapping("get1")
-    public void jzlGet1() throws IOException {
-        System.out.println("ccccccccccc");
+    @PostMapping("post")
+    public void jzlPost(@RequestBody Jzl jzl) throws IOException {
+        System.out.println(jzl);
     }
 
 }

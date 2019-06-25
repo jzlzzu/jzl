@@ -22,7 +22,7 @@ import java.lang.reflect.Method;
 @Aspect
 public class LoginAspect {
 
-    @Pointcut("execution(* com.jzl.controller..*.*(..))")
+    @Pointcut("execution(* com.jzl.file..*.*(..)) || execution(* com.jzl.controller..*.*(..))")
     public void method(){
 
     }

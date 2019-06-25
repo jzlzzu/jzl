@@ -1,5 +1,8 @@
 package com.jzl.hash;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jzl.entity.Jzl;
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -43,7 +46,16 @@ public class Test {
      * jasypt
      * @param args
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException {
+        Jzl jzl = new Jzl();
+        jzl.setId("1");
+        jzl.setName("fff");
+        jzl.setAge("111");
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(jzl);
+
+        System.out.println(s);
+
         BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
         //加密所需的salt(盐)
         textEncryptor.setPassword("jzl");
