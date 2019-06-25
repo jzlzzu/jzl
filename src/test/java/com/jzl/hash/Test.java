@@ -7,9 +7,7 @@ import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Author: jzl
@@ -38,6 +36,11 @@ public class Test {
         hashMap.forEach((k,v)->{
             System.out.println(k + "----" +v);
         });
+
+        String str = "aa,b,c";
+        String[] split = str.split(",");
+        List<String> stringList = Arrays.asList(split);
+        System.out.println(stringList.contains("a"));
 
 
     }

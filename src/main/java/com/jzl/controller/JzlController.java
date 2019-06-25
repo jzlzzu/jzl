@@ -3,6 +3,7 @@ package com.jzl.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.aop.LoginRequired;
 import com.jzl.application.Config;
+import com.jzl.config.MyProperties;
 import com.jzl.entity.Jzl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -35,6 +36,9 @@ public class JzlController {
     @Autowired
     private Environment env;
 
+    @Autowired
+    private MyProperties myProperties;
+
 
     @Autowired
     private Config config;
@@ -45,9 +49,9 @@ public class JzlController {
 
         String method = request.getMethod();
 
-
         System.out.println(config.getJzl());
         String path = new ClassPathResource("server.keystore").getPath();
+        ClassPathResource classPathResource = new ClassPathResource("server.keystore");
         System.out.println(path);
         String name = new File("src/main/resources/server.keystore").getName();
         System.out.println("name"+ name);
