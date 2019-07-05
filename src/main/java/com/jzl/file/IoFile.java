@@ -1,6 +1,6 @@
 package com.jzl.file;
 
-import java.util.concurrent.locks.ReentrantLock;
+import java.io.*;
 
 /**
  * @Author: jzl
@@ -9,9 +9,20 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Modified By:
  */
 public class IoFile {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
-        ReentrantLock lock = new ReentrantLock();
+
+        //字符流  reader fileReader BufferedReader InputStreamReader
+        FileReader fileReader = new FileReader(new File(""));
+
+        //       writer fileWriter BufferedWriter OutPutStreamWriter
+
+
+
+        //字节流  inputStream fileInputStream bufferedInputStream
+        //       outPutStream fileOutPutStream bufferedOutStream
+
+
 
     }
 }

@@ -22,6 +22,8 @@ mybatis-plus:
       id-type: auto
       field-strategy: ignored
       table-underline: true
+  configuration:
+    map-underscore-to-camel-case: true
 jzl: ENC(q/PJyjfSvBNxtXegkaf5bA==)
 jasypt:
   encryptor:

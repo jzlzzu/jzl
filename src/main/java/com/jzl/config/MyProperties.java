@@ -12,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  */
 @Configuration
 @ConfigurationProperties
-@PropertySource(value = {"classpath:url.properties","file:C:\\zl\\url.properties"})
+@PropertySource(value = {"classpath:url.properties","file:C:\\zl\\url.properties"},ignoreResourceNotFound = true)
 public class MyProperties {
     private String url;
 
