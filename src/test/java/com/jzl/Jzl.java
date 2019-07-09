@@ -1,17 +1,33 @@
 package com.jzl;
 
+import com.jzl.entity.Weather;
 import org.junit.Test;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @Author: jzl
  * @Description:
  * @Date: Created in 9:58 2019/7/2
  * @Modified By:
- */
+ *
+/**       ┏┛ ┻━━━━━┛ ┻┓
+          ┃　　　　　　 ┃
+          ┃　　　━　　　┃
+          ┃　┳┛　  ┗┳　┃
+          ┃　　　　　　 ┃
+          ┃　　　┻　　　┃
+          ┃　　　　　　 ┃
+          ┗━┓　　　┏━━━┛
+            ┃　　　┃   神兽保佑
+            ┃　　　┃   代码无BUG！
+            ┃　　　┗━━━━━━━━━┓
+            ┃　　　　　　　    ┣┓
+            ┃　　　　         ┏┛
+            ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+              ┃ ┫ ┫   ┃ ┫ ┫
+              ┗━┻━┛   ┗━┻━┛
+*/
 public class Jzl {
 
     @Test
@@ -22,5 +38,25 @@ public class Jzl {
         }
         bufferedWriter.flush();
         bufferedWriter.close();
+    }
+
+
+    @Test
+    public void serialJzl() throws Exception {
+        Weather weather = new Weather();
+        weather.setId(1);
+        weather.setProvince("henan");
+        weather.setCity("zzu");
+        weather.setWeather("spring");
+
+        ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("weather.obj"));
+        outputStream.writeObject(weather);
+
+
+    }
+
+    @Test
+    public void noSerialJzl() {
+
     }
 }

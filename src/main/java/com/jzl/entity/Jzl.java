@@ -2,6 +2,8 @@ package com.jzl.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Author: jzl
  * @Description:
@@ -9,7 +11,7 @@ import lombok.Data;
  * @Modified By:
  */
 @Data
-public class Jzl {
+public class Jzl implements Serializable {
     private String id;
     private String name;
     private String age;
