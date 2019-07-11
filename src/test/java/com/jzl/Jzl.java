@@ -58,5 +58,10 @@ public class Jzl {
     @Test
     public void noSerialJzl() {
 
+        String str = "127.0.0.1:9090/dx-manage/api/123";
+        int i = str.indexOf("dx-manage");
+        String substring = str.substring(i);
+        System.out.println(substring);
+
     }
 }
