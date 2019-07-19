@@ -3,6 +3,7 @@ package com.jzl.mapper.master;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jzl.entity.Weather;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -18,5 +19,16 @@ public interface WeatherMapper extends BaseMapper<Weather> {
 
     @Select("SELECT * FROM `student` LEFT join `weather` on student.id = weather.id")
      List<Weather> lists(Page<Map<String,Object>> page);
+
+    Weather selectCity();
+
+    List<Weather> selectByWeather(Weather weather);
+
+
+    Integer customInsertSelective(Weather weather);
+
+    void customBatchInsert(@Param("weatherList") List<Weather> weatherList);
+
+    void customeUpdateById(Weather weather);
 
 }

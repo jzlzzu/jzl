@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzl.mapper.master.WeatherMapper">
+    <resultMap id="BaseResultMap" type="com.jzl.entity.Weather">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="province" jdbcType="VARCHAR" property="province"/>
+        <result column="city" jdbcType="VARCHAR" property="city"/>
+        <result column="time" jdbcType="VARCHAR" property="time"/>
+        <result column="weather" jdbcType="VARCHAR" property="weather"/>
+        <result column="temperature" jdbcType="VARCHAR" property="temperature"/>
+        <result column="wind" jdbcType="VARCHAR" property="wind"/>
+    </resultMap>
+
+    <sql id="Base_Column_Sql">
+        id,province,city,time,weather,temperature,wind
+    </sql>
+
+    <select id="selectCity" resultMap="BaseResultMap">
+        select city from `weather` where id = 1;
+    </select>
+    <select id="selectByWeather" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_Sql"/>
+        from
+        `weather`
+        <where>
+            <trim prefixOverrides="and">
+                <if test="id != null">
+                    and id = #{id}
+                </if>
+                <if test="province != null">
+                    and province = #{province}
+                </if>
+                <if test="city != null">
+                    and city = #{city}
+                </if>
+                <if test="time != null">
+                    and time = #{time}
+                </if>
+                <if test="weather != null">
+                    and weather = #{weather}
+                </if>
+                <if test="temperature != null">
+                    and temperature = #{temperature}
+                </if>
+                <if test="wind != null">
+                    and wind = #{wind}
+                </if>
+            </trim>
+        </where>
+
+
+    </select>
+
+    <insert id="customInsertSelective" parameterType="com.jzl.entity.Weather" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">
+        insert into weather
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="province != null">
+                province,
+            </if>
+            <if test="city != null">
+                city,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="weather != null">
+                weather,
+            </if>
+            <if test="temperature != null">
+                temperature,
+            </if>
+            <if test="wind != null">
+                wind
+            </if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="province != null">
+                #{province}
+            </if>
+            <if test="city != null">
+                #{city},
+            </if>
+            <if test="time != null">
+                #{time},
+            </if>
+            <if test="weather != null">
+                #{weather},
+            </if>
+            <if test="temperature != null">
+                #{temperature},
+            </if>
+            <if test="wind != null">
+                #{wind}
+            </if>
+        </trim>
+
+    </insert>
+
+    <insert id="customBatchInsert" parameterType="com.jzl.entity.Weather">
+        insert into weather
+        <trim suffix=")" prefix="(">
+            <include refid="Base_Column_Sql"/>
+        </trim>
+        values
+        <foreach collection="weatherList" item="weather" separator=",">
+            (
+            #{weather.id},
+            #{weather.province},
+            #{weather.city},
+            #{weather.time},
+            #{weather.weather},
+            #{weather.temperature},
+            #{weather.wind}
+            )
+        </foreach>
+    </insert>
+
+    <update id="customeUpdateById" parameterType="com.jzl.entity.Weather">
+        update weather
+        <set>
+            <if test="id != null">
+                id = #{id},
+            </if>
+            <if test="province != null">
+                province =#{province}
+            </if>
+            <if test="city != null">
+                city = #{city},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="weather != null">
+                weather =#{weather},
+            </if>
+            <if test="temperature != null">
+                temperature =#{temperature},
+            </if>
+            <if test="wind != null">
+                wind =#{wind}
+            </if>
+        </set>
+        where id = #{id}
+
+    </update>
+
+
+</mapper>

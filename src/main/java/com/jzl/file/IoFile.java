@@ -132,6 +132,7 @@ public class IoFile {
         stringReader.close();
     }
 
+
     private static void inputStreamReader() throws IOException {
         InputStream inputStream = new FileInputStream(new File("C:\\jzl\\io.txt"));
         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);

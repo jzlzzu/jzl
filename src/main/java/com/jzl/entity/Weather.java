@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class Weather implements Serializable {
-    private int id;
+    private Integer id;
     private String province;
     private String city;
     private String time;

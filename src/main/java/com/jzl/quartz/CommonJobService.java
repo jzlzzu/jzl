@@ -20,7 +20,7 @@ public class CommonJobService {
         JobKey jobKey =  JobKey.jobKey("jobname","jobgroup");
 
         // requestRecovery() : 当系统重启时会重新执行 qrtz_fired_triggers(记录正在运行的任务)中的任务
-        JobDetail jobdetail = JobBuilder.newJob().withIdentity(jobKey).requestRecovery().build();
+        JobDetail jobdetail = JobBuilder.newJob(CommonJob.class).withIdentity(jobKey).requestRecovery().build();
         jobdetail.getJobDataMap().put("jzl","jzl");
 
 

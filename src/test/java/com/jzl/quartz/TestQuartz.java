@@ -1,8 +1,12 @@
 package com.jzl.quartz;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @Author: jzl
@@ -10,7 +14,13 @@ import org.quartz.impl.StdSchedulerFactory;
  * @Date: Created in 15:01 2019/4/28
  * @Modified By:
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class TestQuartz {
+
+    @Autowired
+    private CommonJobService commonJobService;
+
     @Test
     public void testCommonJob() throws SchedulerException {
         JobDetail jobdetail = JobBuilder
@@ -34,5 +44,10 @@ public class TestQuartz {
         scheduler.start();
         scheduler.scheduleJob(jobdetail,trigger);
 
+    }
+
+    @Test
+    public void testCommonJobService() throws SchedulerException {
+        commonJobService.addJob();
     }
 }

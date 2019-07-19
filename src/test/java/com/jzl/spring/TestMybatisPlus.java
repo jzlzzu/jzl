@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,5 +47,49 @@ public class TestMybatisPlus {
         Page<Map<String,Object>> page = new Page<>(1, 3);
         List<Weather> lists = weatherMapper.lists(page);
         System.out.println(lists);
+    }
+
+    @Test
+    public void test1() {
+        Weather weather = weatherMapper.selectCity();
+        System.out.println(weather);
+    }
+
+    @Test
+    public void testInsert() {
+        Weather weather = new Weather();
+        weather.setWeather("olleh");
+        Integer integer = weatherMapper.customInsertSelective(weather);
+        System.out.println(integer);
+        System.out.println(weather.getId());
+    }
+
+    @Test
+    public void testBatchInsert() {
+
+        List<Weather> weathers = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Weather weather = new Weather();
+            weather.setWeather("olleh");
+            weathers.add(weather);
+        }
+        weatherMapper.customBatchInsert(weathers);
+
+    }
+
+    @Test
+    public void testSelectByWeather() {
+        Weather weather = new Weather();
+        weather.setWeather("olleh");
+        List<Weather> weathers = weatherMapper.selectByWeather(weather);
+        System.out.println(weathers);
+    }
+
+    @Test
+    public void testUpdate() {
+        Weather weather = new Weather();
+        weather.setWeather("hello");
+        weather.setId(10019);
+        weatherMapper.customeUpdateById(weather);
     }
 }

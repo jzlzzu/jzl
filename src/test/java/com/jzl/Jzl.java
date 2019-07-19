@@ -2,7 +2,9 @@ package com.jzl;
 
 import com.jzl.entity.Weather;
 import org.junit.Test;
+import org.springframework.http.HttpHeaders;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 /**
