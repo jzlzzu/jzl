@@ -6,7 +6,7 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * @Author: jzl
- * @Description:
+ * @Description: 优先读取classpath:url.properties的配置项, 找不到再去找file配置的文件
  * @Date: Created in 17:14 2019/6/25
  * @Modified By:
  */

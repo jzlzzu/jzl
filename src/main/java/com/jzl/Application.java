@@ -22,6 +22,12 @@ public class Application{
         SpringApplication.run(Application.class);
     }
 
+
+    /**
+     * 配置https 80端口重定向到8080
+     * @return
+     */
+
     @Bean
     public Connector connector(){
         Connector connector=new Connector("org.apache.coyote.http11.Http11NioProtocol");
@@ -32,6 +38,10 @@ public class Application{
         return connector;
     }
 
+    /**
+     * 配置https
+     * @return
+     */
     @Bean
     public TomcatServletWebServerFactory tomcatServletWebServerFactory(Connector connector){
         TomcatServletWebServerFactory tomcat=new TomcatServletWebServerFactory(){
