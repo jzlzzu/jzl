@@ -42,7 +42,7 @@ public class TestQuartz {
         StdSchedulerFactory stdSchedulerFactory = new StdSchedulerFactory();
         Scheduler scheduler = stdSchedulerFactory.getScheduler();
         scheduler.start();
-        scheduler.scheduleJob(jobdetail,trigger);
+        scheduler.scheduleJob(jobdetail, trigger);
 
     }
 

@@ -65,5 +65,7 @@ public class Jzl {
         String substring = str.substring(i);
         System.out.println(substring);
 
+        System.out.println(System.getProperty("user.dir"));
+
     }
 }

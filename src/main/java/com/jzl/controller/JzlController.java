@@ -47,6 +47,10 @@ public class JzlController {
     @GetMapping("get")
     public void jzlGet(@SessionAttribute(name="str",required = false) String str) throws IOException {
 
+        System.out.println("myProperties-url"  + myProperties.getUrl() );
+        System.out.println("myProperties-name"  + myProperties.getName() );
+
+
         String method = request.getMethod();
 
         System.out.println(config.getJzl());
