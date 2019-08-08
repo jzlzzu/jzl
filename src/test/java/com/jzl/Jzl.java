@@ -2,41 +2,42 @@ package com.jzl;
 
 import com.jzl.entity.Weather;
 import org.junit.Test;
-import org.springframework.http.HttpHeaders;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @Author: jzl
  * @Description:
  * @Date: Created in 9:58 2019/7/2
  * @Modified By:
- *
-/**       ┏┛ ┻━━━━━┛ ┻┓
-          ┃　　　　　　 ┃
-          ┃　　　━　　　┃
-          ┃　┳┛　  ┗┳　┃
-          ┃　　　　　　 ┃
-          ┃　　　┻　　　┃
-          ┃　　　　　　 ┃
-          ┗━┓　　　┏━━━┛
-            ┃　　　┃   神兽保佑
-            ┃　　　┃   代码无BUG！
-            ┃　　　┗━━━━━━━━━┓
-            ┃　　　　　　　    ┣┓
-            ┃　　　　         ┏┛
-            ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
-              ┃ ┫ ┫   ┃ ┫ ┫
-              ┗━┻━┛   ┗━┻━┛
-*/
+ * <p>
+ * /**       ┏┛ ┻━━━━━┛ ┻┓
+ * ┃　　　　　　 ┃
+ * ┃　　　━　　　┃
+ * ┃　┳┛　  ┗┳　┃
+ * ┃　　　　　　 ┃
+ * ┃　　　┻　　　┃
+ * ┃　　　　　　 ┃
+ * ┗━┓　　　┏━━━┛
+ * ┃　　　┃   神兽保佑
+ * ┃　　　┃   代码无BUG！
+ * ┃　　　┗━━━━━━━━━┓
+ * ┃　　　　　　　    ┣┓
+ * ┃　　　　         ┏┛
+ * ┗━┓ ┓ ┏━━━┳ ┓ ┏━┛
+ * ┃ ┫ ┫   ┃ ┫ ┫
+ * ┗━┻━┛   ┗━┻━┛
+ */
 public class Jzl {
 
     @Test
     public void commonTest() throws IOException {
-        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\jzl\\data\\write.txt",true));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("C:\\jzl\\data\\write.txt", true));
         for (int i = 0; i < 10000000; i++) {
-            bufferedWriter.append("olleh"+ i + System.lineSeparator());
+            bufferedWriter.append("olleh" + i + System.lineSeparator());
         }
         bufferedWriter.flush();
         bufferedWriter.close();
@@ -58,7 +59,7 @@ public class Jzl {
     }
 
     @Test
-    public void noSerialJzl() {
+    public void noSerialJzl() throws ParseException {
 
         String str = "127.0.0.1:9090/dx-manage/api/123";
         int i = str.indexOf("dx-manage");
@@ -66,6 +67,17 @@ public class Jzl {
         System.out.println(substring);
 
         System.out.println(System.getProperty("user.dir"));
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse("2018-07-29");
+        long time = date.getTime();
+
+        Date curDate = new Date();
+        long curDateStr = curDate.getTime();
+
+        System.out.println(curDateStr - time);
+        System.out.println((curDateStr - time) > 180L * 24 * 3600 * 1000);
 
     }
 }
