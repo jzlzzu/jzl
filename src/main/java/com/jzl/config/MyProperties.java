@@ -6,16 +6,17 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * @Author: jzl
- * @Description: 优先读取classpath:url.properties的配置项, 找不到再去找file配置的文件配置项(按照value的顺序) 功能类似application.properties配置文件
+ * @Description: 优先读取classpath:url.properties的配置项, 找不到再去找file配置的文件配置项(原则是按照value配置的值的顺序) 实现功能类似application.properties配置文件
  * 如果两个配置文件有相同key 则后面的覆盖前面的
  * @Date: Created in 17:14 2019/6/25
- * 注意 : \\在linux环境下会失效
+ * 注意 : '\\' 在linux环境下会失效 需要使用 '/'
  * @Modified By:
  */
 @Configuration
 @ConfigurationProperties
 //@PropertySource(value = {"classpath:url.properties","file:C:\\zl\\url.properties"},ignoreResourceNotFound = true)
-@PropertySource(value = {"classpath:url.properties","file:${user.dir}/url.properties"},ignoreResourceNotFound = true)
+//@PropertySource(value = {"classpath:url.properties","file:${user.dir}/url.properties"},ignoreResourceNotFound = true)
+@PropertySource(value = "classpath:url.properties")
 public class MyProperties {
     private String url;
 
