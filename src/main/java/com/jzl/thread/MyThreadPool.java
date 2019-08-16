@@ -30,21 +30,29 @@ public class MyThreadPool {
     private static long keepAliveTime = 30000;
 
     private static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
-            TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
+            TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100),new ThreadPoolExecutor.DiscardOldestPolicy());
 
 
     public static void main(String[] args) {
-        threadPoolExecutor.allowCoreThreadTimeOut(false);
-        //没有返回值
-        threadPoolExecutor.execute(() -> {
-            System.out.println("线程池测试");
-        });
+        for(;;){
+            threadPoolExecutor.allowCoreThreadTimeOut(false);
+            //没有返回值
+            threadPoolExecutor.execute(() -> {
+                System.out.println("线程池测试");
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+            System.out.println(threadPoolExecutor.getTaskCount());;
 
-        //有返回值
-        Future<Boolean> 线程池测试2 = threadPoolExecutor.submit(() -> {
-            System.out.println("线程池测试2");
-            return true;
-        });
+//            //有返回值
+//            Future<Boolean> 线程池测试2 = threadPoolExecutor.submit(() -> {
+//                System.out.println("线程池测试2");
+//                return true;
+//            });
+        }
     }
 
 }

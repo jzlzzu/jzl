@@ -24,7 +24,6 @@
         from
         `weather`
         <where>
-            <trim prefixOverrides="and">
                 <if test="id != null">
                     and id = #{id}
                 </if>
@@ -46,7 +45,6 @@
                 <if test="wind != null">
                     and wind = #{wind}
                 </if>
-            </trim>
         </where>
 
 
