@@ -14,6 +14,12 @@ spring:
     username: root
     password: passwd
     driver-class-name: com.mysql.jdbc.Driver
+  rabbitmq:
+    host: 10.121.198.34
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: /jzl
 mybatis-plus:
   mapper-locations: classpath*:mybatis/*.xml
   type-aliases-package: com.jzl.entity
