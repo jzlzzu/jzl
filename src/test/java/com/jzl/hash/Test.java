@@ -45,11 +45,14 @@ public class Test {
 
     }
 
+
+
     /**
      * jasypt
      * @param args
      */
     public static void main(String[] args) throws JsonProcessingException {
+
         Jzl jzl = new Jzl();
         jzl.setId("1");
         jzl.setName("fff");

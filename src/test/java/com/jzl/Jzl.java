@@ -80,4 +80,14 @@ public class Jzl {
         System.out.println((curDateStr - time) > 180L * 24 * 3600 * 1000);
 
     }
+
+    @Test
+    public void name() {
+        String s1 = "abc";
+        String s2 = "abc";
+
+        String abc = new String("abc");
+        System.out.println(s1 == s2);
+        System.out.println(s1 == abc);
+    }
 }
