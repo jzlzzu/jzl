@@ -39,9 +39,11 @@ public class MyThreadTest extends Thread {
         public static void main(String[] args) {
             try {
                 MyThreadTest t = new MyThreadTest();
+                //针对不加volatile的情况：线程启动之后，线程读取到的主内存值为 true， 然后复制一份到线程内存 ： true
                 t.start();
-                Thread.sleep(100);
+                //针对不加volatile的情况：主线程修改了创建线程的值 ，此时修改的值在主线程内存中，线程结束后主内存值变为 false, 此时t线程中的值依然是 true
                 t.setRunning(false);
+                Thread.sleep(100);
                 System.out.println("isRunning设置成false");
             } catch (InterruptedException e) {
                 e.printStackTrace();

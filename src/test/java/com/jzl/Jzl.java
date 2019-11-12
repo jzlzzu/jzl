@@ -1,7 +1,9 @@
 package com.jzl;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.Weather;
 import org.junit.Test;
+import org.springframework.beans.BeanUtils;
 
 import java.io.*;
 import java.text.ParseException;
@@ -81,13 +83,32 @@ public class Jzl {
 
     }
 
+
     @Test
-    public void name() {
-        String s1 = "abc";
+    public void strEqu() {
+
+        String s1 = "abc   ";
         String s2 = "abc";
 
         String abc = new String("abc");
         System.out.println(s1 == s2);
         System.out.println(s1 == abc);
+    }
+    @Test
+    public void name() throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        //{"id":null,"province":null,"city":"zz","time":null,"weather":null,"temperature":null,"wind":null}
+
+        Weather weather1 = mapper.readValue("{\"id\":123,\"province\":null,\"city\":\"zz\",\"time\":null,\"weather\":null,\"temperature\":null,\"wind\":null}", Weather.class);
+
+        com.jzl.entity.Jzl jzl = new com.jzl.entity.Jzl();
+
+        BeanUtils.copyProperties(weather1,jzl);
+
+        System.out.println(jzl);
+
+
     }
 }

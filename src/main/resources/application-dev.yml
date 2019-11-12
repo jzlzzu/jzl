@@ -31,8 +31,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
 #java -cp jasypt-1.9.2.jar org.jasypt.intf.cli.JasyptPBEStringEncryptionCLI input="ceshi" password=jzl algorithm=PBEWithMD5AndDES
-#jzl: ENC(jl2ZmYPIVvxlTLkHRkMKrQ==)
-jzl: ceshi
+jzl: ENC(jl2ZmYPIVvxlTLkHRkMKrQ==)
+#jzl: ceshi
 jasypt:
   encryptor:
     password: jzl

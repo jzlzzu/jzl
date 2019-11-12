@@ -54,7 +54,7 @@ public class Test {
     public static void main(String[] args) throws JsonProcessingException {
 
         Jzl jzl = new Jzl();
-        jzl.setId("1");
+        jzl.setId(1);
         jzl.setName("fff");
         jzl.setAge("111");
         ObjectMapper mapper = new ObjectMapper();
