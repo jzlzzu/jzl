@@ -54,4 +54,16 @@ public class DesignTest {
 
         concreteDecorateB.show();
     }
+
+    @Test
+    public void testRedisLockTest() {
+        RedisLockUtil.executeSynchOperate(new RedisLockUtil.MainOperator<Boolean>() {
+            @Override
+            public Boolean executeInvokeLogic(Boolean flag) {
+                System.out.println("--------");
+                return false;
+            }
+        },"lockCache");
+
+    }
 }

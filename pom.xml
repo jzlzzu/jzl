@@ -94,6 +94,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.5</version>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.25</version>
@@ -120,6 +126,15 @@
             <artifactId>jasypt-spring-boot-starter</artifactId>
             <version>1.14</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.62</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -162,15 +177,15 @@
             </plugin>
             <!-- tomcat插件 -->
             <!--<plugin>-->
-                <!--<groupId>org.apache.tomcat.maven</groupId>-->
-                <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
-                <!--<version>2.2</version>-->
-                <!--<configuration>-->
-                    <!--<port>80</port>-->
-                    <!--<path>/jzl</path>-->
-                    <!--<uriEncoding>UTF-8</uriEncoding>-->
-                    <!--<server>tomcat7</server>-->
-                <!--</configuration>-->
+            <!--<groupId>org.apache.tomcat.maven</groupId>-->
+            <!--<artifactId>tomcat7-maven-plugin</artifactId>-->
+            <!--<version>2.2</version>-->
+            <!--<configuration>-->
+            <!--<port>80</port>-->
+            <!--<math>/jzl</math>-->
+            <!--<uriEncoding>UTF-8</uriEncoding>-->
+            <!--<server>tomcat7</server>-->
+            <!--</configuration>-->
             <!--</plugin>-->
         </plugins>
     </build>

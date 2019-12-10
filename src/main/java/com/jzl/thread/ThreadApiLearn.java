@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: jzl
@@ -15,8 +16,8 @@ import java.util.concurrent.Executors;
 public class ThreadApiLearn {
 
     public static void main(String[] args) throws Exception {
-        learnCountDownLatch();
 
+        learnCountDownLatch();
 
         // 使用wait 和 notify实现 生产者 消费者线程
 //        learnWaitNotify();
@@ -43,13 +44,14 @@ public class ThreadApiLearn {
                     System.out.println("线程阻塞啦");
                     countDownLatchA.await();
                     System.out.println("线程放行了");
-                    countDownLatchB.countDown();
                     System.out.println("------" + countDownLatchB.getCount());
+                    countDownLatchB.countDown();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             });
         }
+        TimeUnit.SECONDS.sleep(10);
         System.out.println(countDownLatchA.getCount());
         // 调用countDown方法, 计数值 count -1 ; 此时count 为0 ,阻塞线程开始放行了
         countDownLatchA.countDown();

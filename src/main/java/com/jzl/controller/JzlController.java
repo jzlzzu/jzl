@@ -45,7 +45,7 @@ public class JzlController {
 
     @LoginRequired(loginRequired = true)
     @GetMapping("get")
-    public void jzlGet(@SessionAttribute(name="str",required = false) String str) throws IOException {
+    public String jzlGet(@SessionAttribute(name="str",required = false) String str) throws IOException {
 
         System.out.println("myProperties-url"  + myProperties.getUrl() );
         System.out.println("myProperties-name"  + myProperties.getName() );
@@ -70,7 +70,7 @@ public class JzlController {
 
 //        response.sendRedirect("/jzl/get1");
 
-//        return "getCC";
+        return "getCC";
     }
 
     @PostMapping("post")

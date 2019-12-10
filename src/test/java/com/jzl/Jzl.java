@@ -1,13 +1,26 @@
 package com.jzl;
 
+import com.alibaba.fastjson.JSON;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jzl.entity.Tree;
 import com.jzl.entity.Weather;
+import com.jzl.utils.HttpClientUtil;
+import org.apache.http.impl.client.HttpClients;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.junit.Test;
-import org.springframework.beans.BeanUtils;
 
+import javax.tools.JavaCompiler;
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -95,20 +108,71 @@ public class Jzl {
         System.out.println(s1 == abc);
     }
     @Test
-    public void name() throws IOException {
+    public void testHttpClient() throws IOException {
 
-        ObjectMapper mapper = new ObjectMapper();
 
-        //{"id":null,"province":null,"city":"zz","time":null,"weather":null,"temperature":null,"wind":null}
+//        String s = HttpClientUtil.sendPostSSLRequest("https://www.baidu.com", "");
+        String s = HttpClientUtil.sendPostSSLRequest("https://10.121.74.64:4443/api/dynamic/certificate/obtain_token", "{}");
 
-        Weather weather1 = mapper.readValue("{\"id\":123,\"province\":null,\"city\":\"zz\",\"time\":null,\"weather\":null,\"temperature\":null,\"wind\":null}", Weather.class);
+        System.out.println("------------");
 
-        com.jzl.entity.Jzl jzl = new com.jzl.entity.Jzl();
 
-        BeanUtils.copyProperties(weather1,jzl);
+    }
 
-        System.out.println(jzl);
+    @Test
+    public void testExecption() {
+        try {
+            System.out.println("开始执行");
+            int i = 10 /0;
+        } catch (Exception e) {
+            System.out.println("exception");
+        } finally {
+            System.out.println("finally");
+        }
 
+
+    }
+
+    @Test
+    public void testFastJson() throws IOException, JSONException {
+
+        Tree tree = new Tree("red","128");
+
+        Object o = JSON.toJSON(tree);
+        String s1 = JSON.toJSONString(tree);
+
+        System.out.println(s1);
+
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("color","red");
+        jsonObject.put("high","128");
+        String s = String.valueOf(jsonObject);
+        System.out.println(s);
+        Object jsonObject1 = JSON.parse(String.valueOf(jsonObject));
+
+
+
+
+
+    }
+
+    @Test
+    public void testjava8Date() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        LocalDateTime now = LocalDateTime.now();
+        String s = now.toString();
+        System.out.println(s);
+
+
+    }
+
+    @Test
+    public void complicatedexpression_r(){
+        BigDecimal a = new BigDecimal(5);
+        BigDecimal b = new BigDecimal(6);
+        BigDecimal divide = a.divide(b, 4, RoundingMode.HALF_UP);
+        System.out.println(divide);
 
     }
 }

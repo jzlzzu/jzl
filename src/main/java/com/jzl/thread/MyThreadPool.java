@@ -35,7 +35,8 @@ public class MyThreadPool {
 
     public static void main(String[] args) {
         for(;;){
-            threadPoolExecutor.allowCoreThreadTimeOut(false);
+            //设置allowCoreThreadTimeout=true（默认false）时，核心线程会超时关闭
+            threadPoolExecutor.allowCoreThreadTimeOut(true);
             //没有返回值
             threadPoolExecutor.execute(() -> {
                 System.out.println("线程池测试");
@@ -45,7 +46,7 @@ public class MyThreadPool {
                     e.printStackTrace();
                 }
             });
-            System.out.println(threadPoolExecutor.getTaskCount());;
+            System.out.println(threadPoolExecutor.getTaskCount());
 
 //            //有返回值
 //            Future<Boolean> 线程池测试2 = threadPoolExecutor.submit(() -> {
