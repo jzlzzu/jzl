@@ -23,20 +23,20 @@ import java.lang.reflect.Method;
 public class LoginAspect {
 
     @Pointcut("execution(* com.jzl.file..*.*(..)) || execution(* com.jzl.controller..*.*(..))")
-    public void method(){
+    public void method() {
 
     }
 
     @Around("method()")
     public Object log(ProceedingJoinPoint point) throws Throwable {
         System.out.println("LoginAspect 切面执行");
-        MethodSignature signature = (MethodSignature)point.getSignature();
+        MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
 
-       ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = sra.getRequest();
 
-        if(isLoginRequired(method)){
+        if (isLoginRequired(method)) {
             // 对添加 loginRequired注解的方法做处理
             System.out.println("对添加 loginRequired注解的方法做处理");
         }
@@ -46,7 +46,7 @@ public class LoginAspect {
     }
 
     private boolean isLoginRequired(Method method) {
-        if(method.isAnnotationPresent(LoginRequired.class)){
+        if (method.isAnnotationPresent(LoginRequired.class)) {
             return true;
         }
 

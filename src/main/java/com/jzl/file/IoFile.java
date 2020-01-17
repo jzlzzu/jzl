@@ -26,7 +26,6 @@ public class IoFile {
 //        outputStreamWriter();
 
 
-
         //字节流  inputStream fileInputStream bufferedInputStream
         //       outPutStream fileOutPutStream bufferedOutStream
 //        fileInputStream();
@@ -35,7 +34,6 @@ public class IoFile {
 //        bufferedOutputStream();
 
 //        picCopyTest();
-
 
 
     }
@@ -47,8 +45,8 @@ public class IoFile {
         BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File("c:\\jzl\\copy.png")));
         byte[] by = new byte[64];
         int len = 0;
-        while (-1 != (len = bufferedInputStream.read(by))){
-            bufferedOutputStream.write(by,0,len);
+        while (-1 != (len = bufferedInputStream.read(by))) {
+            bufferedOutputStream.write(by, 0, len);
         }
         bufferedOutputStream.flush();
         bufferedOutputStream.close();
@@ -77,8 +75,8 @@ public class IoFile {
         BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File("c:\\jzl\\io.txt")));
         byte[] cbuf = new byte[1024];
         int len;
-        while(-1 != (len = bufferedInputStream.read(cbuf))){
-            System.out.println(new String(cbuf,0,len));
+        while (-1 != (len = bufferedInputStream.read(cbuf))) {
+            System.out.println(new String(cbuf, 0, len));
         }
         bufferedInputStream.close();
     }
@@ -88,8 +86,8 @@ public class IoFile {
 
         byte[] cbuf = new byte[1024];
         int len;
-        while(-1 != (len = fileInputStream.read(cbuf))){
-            System.out.println(new String(cbuf,0,len));
+        while (-1 != (len = fileInputStream.read(cbuf))) {
+            System.out.println(new String(cbuf, 0, len));
         }
         ;
         fileInputStream.close();
@@ -126,8 +124,8 @@ public class IoFile {
         StringReader stringReader = new StringReader("olleh");
         char[] cbuf = new char[2];
         int len = 0;
-        while (-1 != (len = stringReader.read(cbuf))){
-            System.out.println(new String(cbuf,0,len));
+        while (-1 != (len = stringReader.read(cbuf))) {
+            System.out.println(new String(cbuf, 0, len));
         }
         stringReader.close();
     }
@@ -139,8 +137,8 @@ public class IoFile {
 
         char[] cbuf = new char[1024];
         int read = 0;
-        while (-1 != (read = inputStreamReader.read(cbuf))){
-            System.out.println(new String(cbuf,0,read));
+        while (-1 != (read = inputStreamReader.read(cbuf))) {
+            System.out.println(new String(cbuf, 0, read));
         }
         inputStream.close();
         inputStreamReader.close();
@@ -149,7 +147,7 @@ public class IoFile {
     private static void bufferedReader() throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("C:\\jzl\\io.txt")));
         String line = "";
-        while(null != (line = bufferedReader.readLine()) && line.length() > 0){
+        while (null != (line = bufferedReader.readLine()) && line.length() > 0) {
             System.out.println(line);
         }
         bufferedReader.close();
@@ -159,8 +157,8 @@ public class IoFile {
         FileReader fileReader = new FileReader(new File("C:\\jzl\\io.txt"));
         char[] cbuf = new char[64];
         int len = 0;
-        while ((len = fileReader.read(cbuf)) != -1){
-            System.out.println(new String(cbuf,0,len));
+        while ((len = fileReader.read(cbuf)) != -1) {
+            System.out.println(new String(cbuf, 0, len));
         }
         fileReader.close();
     }

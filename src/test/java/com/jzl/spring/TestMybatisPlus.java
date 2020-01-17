@@ -1,6 +1,10 @@
 package com.jzl.spring;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,11 +36,33 @@ public class TestMybatisPlus {
     @Autowired
     private WeatherMapper weatherMapper;
 
+
+    @Test
+    public void testGroup() {
+        QueryWrapper<Weather> wrapper = new QueryWrapper<>();
+        wrapper.select("city", "count(city)").groupBy("city");
+        List<Map<String, Object>> maps = weatherMapper.selectMaps(wrapper);
+        Weather weather = new Weather();
+        weather.setId(1);
+        List<Map<String, Object>> maps1 = weatherMapper.selectMaps(Wrappers.query(weather));
+
+
+
+        System.out.println(maps);
+
+    }
+
+    @Test
+    public void testSum() {
+        weatherMapper.selectSum();
+        System.out.println("fffff");
+    }
+
     @Test
     public void testQuery() throws JsonProcessingException {
 
 //        Weather weather = weatherMapper.selectById(1);
-        Page<Weather> weatherPage = new Page<>(1,5);
+        Page<Weather> weatherPage = new Page<>(1, 5);
         IPage<Weather> weatherIPage = weatherMapper.selectPage(weatherPage, null);
         ObjectMapper mapper = new ObjectMapper();
         System.out.println(mapper.writeValueAsString(weatherIPage));
@@ -44,7 +70,7 @@ public class TestMybatisPlus {
 
     @Test
     public void test() {
-        Page<Map<String,Object>> page = new Page<>(1, 3);
+        Page<Map<String, Object>> page = new Page<>(1, 3);
         List<Weather> lists = weatherMapper.lists(page);
         System.out.println(lists);
     }
@@ -91,5 +117,25 @@ public class TestMybatisPlus {
         weather.setWeather("hello");
         weather.setId(10019);
         weatherMapper.customeUpdateById(weather);
+    }
+
+    @Test
+    public void testQueryWrapper() {
+
+        QueryWrapper<Weather> wrapper = new QueryWrapper<>();
+        wrapper.select("sum(id)").eq("id", "1008611");
+
+        List<Object> objects = weatherMapper.selectObjs(wrapper);
+
+
+        System.out.println("olleh");
+
+
+    }
+
+    @Test
+    public void testJzl() {
+        Weather weather = weatherMapper.testJzl(1, "郑州");
+        System.out.println(weather);
     }
 }

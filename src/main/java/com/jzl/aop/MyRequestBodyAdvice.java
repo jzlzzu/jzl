@@ -24,7 +24,7 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 
     @Override
     public HttpInputMessage beforeBodyRead(HttpInputMessage httpInputMessage, MethodParameter methodParameter, Type type, Class<? extends HttpMessageConverter<?>> aClass) throws IOException {
-        System.out.println("-------------------");
+        System.out.println("-MyRequestBodyAdvice------------beforeBodyRead------");
 
         return null;
     }
@@ -36,7 +36,7 @@ public class MyRequestBodyAdvice implements RequestBodyAdvice {
 
     @Override
     public Object handleEmptyBody(Object o, HttpInputMessage httpInputMessage, MethodParameter methodParameter, Type type, Class<? extends HttpMessageConverter<?>> aClass) {
-        System.out.println("111111111111");
+        System.out.println("MyRequestBodyAdvice-------handleEmptyBody");
         return null;
     }
 }

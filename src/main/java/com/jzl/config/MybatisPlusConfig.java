@@ -18,9 +18,7 @@ import java.util.Properties;
 @MapperScan("com.jzl.mapper")
 public class MybatisPlusConfig {
     /**
-
      * 分页插件 : 物理分页
-
      */
 
     @Bean
@@ -32,20 +30,18 @@ public class MybatisPlusConfig {
     }
 
     /**
-
      * 打印 sql
-
      */
 
     @Bean
 
     public PerformanceInterceptor performanceInterceptor() {
 
-        PerformanceInterceptor performanceInterceptor =new PerformanceInterceptor();
+        PerformanceInterceptor performanceInterceptor = new PerformanceInterceptor();
 
         //格式化sql语句
 
-        Properties properties =new Properties();
+        Properties properties = new Properties();
 
         properties.setProperty("format", "faalse");
 

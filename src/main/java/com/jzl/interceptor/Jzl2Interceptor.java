@@ -17,7 +17,7 @@ public class Jzl2Interceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("拦截器2执行啦啦");
+        System.out.println(" Jzl2Interceptor 拦截器2执行啦啦");
 
         return super.preHandle(request, response, handler);
     }

@@ -7,7 +7,7 @@ package com.jzl.design.simplefactory;
  * @Modified By:
  */
 public class CalculatorFactory {
-   public Calculator createCalculator(String type) {
+    public Calculator createCalculator(String type) {
         Calculator calculator;
         switch (type) {
             case "+":

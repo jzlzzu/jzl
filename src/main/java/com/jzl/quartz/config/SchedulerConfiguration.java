@@ -26,7 +26,7 @@ public class SchedulerConfiguration {
     private MyJobFactory myJobFactory;
 
     @Value("${spring.datasource.url}")
-    private String str ;
+    private String str;
 
     @Bean(name = "schedulerFactoryBean")
     public SchedulerFactoryBean schedulerFactoryBean() throws IOException {

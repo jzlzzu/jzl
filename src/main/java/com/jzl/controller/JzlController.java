@@ -5,6 +5,7 @@ import com.jzl.aop.LoginRequired;
 import com.jzl.application.Config;
 import com.jzl.config.MyProperties;
 import com.jzl.entity.Jzl;
+import com.jzl.listener.EventPublisServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
@@ -39,16 +40,20 @@ public class JzlController {
     @Autowired
     private MyProperties myProperties;
 
+    @Autowired
+    private EventPublisServiceImpl eventPublisService;
+
+
 
     @Autowired
     private Config config;
 
     @LoginRequired(loginRequired = true)
     @GetMapping("get")
-    public String jzlGet(@SessionAttribute(name="str",required = false) String str) throws IOException {
+    public String jzlGet(@SessionAttribute(name = "str", required = false) String str) throws IOException {
 
-        System.out.println("myProperties-url"  + myProperties.getUrl() );
-        System.out.println("myProperties-name"  + myProperties.getName() );
+        System.out.println("myProperties-url" + myProperties.getUrl());
+        System.out.println("myProperties-name" + myProperties.getName());
 
 
         String method = request.getMethod();
@@ -58,10 +63,10 @@ public class JzlController {
         ClassPathResource classPathResource = new ClassPathResource("server.keystore");
         System.out.println(path);
         String name = new File("src/main/resources/server.keystore").getName();
-        System.out.println("name"+ name);
+        System.out.println("name" + name);
 
         HashMap<String, String> map = new HashMap<>();
-        map.put("response_status","401");
+        map.put("response_status", "401");
         ObjectMapper mapper = new ObjectMapper();
         OutputStream os = response.getOutputStream();
         os.write(mapper.writeValueAsBytes(map));
@@ -77,5 +82,14 @@ public class JzlController {
     public void jzlPost(@RequestBody Jzl jzl) throws IOException {
         System.out.println(jzl);
     }
+
+    /**
+     *  测试发布事件 触发监听器
+     */
+    @GetMapping("/publish")
+    public void publistEvent(){
+        eventPublisService.publishEvent();
+    }
+
 
 }

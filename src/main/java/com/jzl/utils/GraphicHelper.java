@@ -15,14 +15,10 @@ public final class GraphicHelper {
     /**
      * 以字符串形式返回生成的验证码，同时输出一个图片
      *
-     * @param width
-     *            图片的宽度
-     * @param height
-     *            图片的高度
-     * @param imgType
-     *            图片的类型
-     * @param output
-     *            图片的输出流(图片将输出到这个流中)
+     * @param width   图片的宽度
+     * @param height  图片的高度
+     * @param imgType 图片的类型
+     * @param output  图片的输出流(图片将输出到这个流中)
      * @return 返回所生成的验证码(字符串)
      */
     public static String create(final int width, final int height, final String imgType, OutputStream output) {
@@ -35,8 +31,8 @@ public final class GraphicHelper {
         graphic.setColor(Color.getColor("F8F8F8"));
         graphic.fillRect(0, 0, width, height);
 
-        Color[] colors = new Color[] { Color.BLUE, Color.GRAY, Color.GREEN, Color.RED, Color.BLACK, Color.ORANGE,
-                Color.CYAN };
+        Color[] colors = new Color[]{Color.BLUE, Color.GRAY, Color.GREEN, Color.RED, Color.BLACK, Color.ORANGE,
+                Color.CYAN};
         // 在 "画板"上生成干扰线条 ( 50 是线条个数)
         for (int i = 0; i < 50; i++) {
             graphic.setColor(colors[random.nextInt(colors.length)]);

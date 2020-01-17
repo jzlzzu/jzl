@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class LogAspect {
 
     @Pointcut("execution(* com.jzl.controller..*.*(..))")
-    public void method(){
+    public void method() {
 
     }
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @Modified By:
  */
 @Component
-public class MyJobListener  implements JobListener {
+public class MyJobListener implements JobListener {
     @Override
     public String getName() {
         return null;
@@ -20,6 +20,7 @@ public class MyJobListener  implements JobListener {
 
     /**
      * 任务执行前调用
+     *
      * @param jobExecutionContext
      */
     @Override
@@ -34,6 +35,7 @@ public class MyJobListener  implements JobListener {
 
     /**
      * 任务执行后调用
+     *
      * @param jobExecutionContext
      * @param e
      */

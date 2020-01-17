@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
  */
 public class ProxyChaseGirlFriendService implements InvocationHandler {
 
-    private Object obj ;
+    private Object obj;
 
     public ProxyChaseGirlFriendService() {
     }

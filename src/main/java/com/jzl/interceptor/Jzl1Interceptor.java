@@ -19,7 +19,7 @@ public class Jzl1Interceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-         log.info("拦截器执行了");
+        System.out.println("Jzl1Interceptor 拦截器1执行啦啦");
         return super.preHandle(request, response, handler);
     }
 }

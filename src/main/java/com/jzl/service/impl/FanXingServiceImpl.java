@@ -23,7 +23,7 @@ public class FanXingServiceImpl<T> implements FanXingInter<T> {
 /**
  * 指定泛型类型实现接口
  */
-class FanXingServiceImpl1 implements FanXingInter<String>{
+class FanXingServiceImpl1 implements FanXingInter<String> {
     @Override
     public String t() {
         return null;

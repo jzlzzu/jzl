@@ -9,7 +9,7 @@ package com.jzl.design;
 public class RedisLockUtil {
 
 
-    public static <T> void executeSynchOperate(MainOperator<T> operator,String lockCache ){
+    public static <T> void executeSynchOperate(MainOperator<T> operator, String lockCache) {
         System.out.println("获取锁");
         operator.executeInvokeLogic(false);
         System.out.println("关闭锁");
@@ -18,9 +18,8 @@ public class RedisLockUtil {
 
     // 返回值为T 不确定
     public abstract interface MainOperator<T> {
-         T executeInvokeLogic(Boolean result);
+        T executeInvokeLogic(Boolean result);
     }
-
 
 
 }

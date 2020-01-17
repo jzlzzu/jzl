@@ -22,7 +22,7 @@ public class MyResponseBodyAdvice implements ResponseBodyAdvice {
 
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
-        System.out.println("2434444444444444444");
+        System.out.println("MyResponseBodyAdvice -- beforeBodyWrite");
         return null;
     }
 }

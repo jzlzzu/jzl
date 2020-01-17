@@ -18,7 +18,7 @@ import java.util.Map;
 public interface WeatherMapper extends BaseMapper<Weather> {
 
     @Select("SELECT * FROM `student` LEFT join `weather` on student.id = weather.id")
-     List<Weather> lists(Page<Map<String,Object>> page);
+    List<Weather> lists(Page<Map<String, Object>> page);
 
     Weather selectCity();
 
@@ -30,5 +30,11 @@ public interface WeatherMapper extends BaseMapper<Weather> {
     void customBatchInsert(@Param("weatherList") List<Weather> weatherList);
 
     void customeUpdateById(Weather weather);
+
+    @Select("SELECT * FROM `weather` where id = #{id} and city = #{city}")
+    Weather testJzl(@Param(value = "id") Integer id, @Param("city") String city);
+
+    @Select("select id , count(city) from weather GROUP BY city")
+    List<Map<String, Object>> selectSum();
 
 }

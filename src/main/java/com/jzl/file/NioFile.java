@@ -50,10 +50,10 @@ public class NioFile {
         FileChannel outChannel = fileOutputStream.getChannel();
 
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-        while (true){
+        while (true) {
 
             int write = inChannel.read(byteBuffer);
-            if(write == -1){
+            if (write == -1) {
                 break;
             }
             byteBuffer.flip();

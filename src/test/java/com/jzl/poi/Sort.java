@@ -32,7 +32,7 @@ public class Sort {
      * 快速排序
      */
     @Test
-    public void testQuickSort(){
+    public void testQuickSort() {
 
     }
 

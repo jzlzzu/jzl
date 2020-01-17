@@ -26,7 +26,6 @@ public class LambdaTest {
         ArrayList<Weather> list = getList();
 
         List<Weather> weathers = list.stream().filter(weather -> weather.getId() > 5).collect(Collectors.toList());
-        System.out.println("----------");
 
         // 获取 id列表
         List<Integer> collect = list.stream().map(Weather::getId).collect(Collectors.toList());
@@ -46,7 +45,7 @@ public class LambdaTest {
 //        System.out.println(collect2);
 
         // 按照id的降序列出所有天气信息
-        List<Weather> collect3 = list.stream().sorted((e1,e2)->Integer.compare(e2.getId(),e1.getId())).collect(Collectors.toList());
+        List<Weather> collect3 = list.stream().sorted((e1, e2) -> Integer.compare(e2.getId(), e1.getId())).collect(Collectors.toList());
         System.out.println(collect3);
 
         // 按照id的升序列出所有天气信息
@@ -72,6 +71,17 @@ public class LambdaTest {
     }
 
     @Test
+    public void name() {
+
+        // 截取字符串得到 10086
+        String str = "aritcle:10086";
+        String substring = str.substring(str.indexOf(":") + 1);
+        System.out.println(substring);
+
+
+    }
+
+    @Test
     public void testLombok() {
 
         // lomBok 重写了对象的equals的 equals和hashcode方法
@@ -92,8 +102,8 @@ public class LambdaTest {
         noLombok1.setColor("red");
         System.out.println(noLombok.equals(noLombok1));
 
-        System.out.println(noLombok.hashCode() + "    "+ noLombok1.hashCode());
-        System.out.println(weather.hashCode() + "    "+ weather1.hashCode());
+        System.out.println(noLombok.hashCode() + "    " + noLombok1.hashCode());
+        System.out.println(weather.hashCode() + "    " + weather1.hashCode());
     }
 
     @Test
@@ -106,17 +116,6 @@ public class LambdaTest {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     private ArrayList<Weather> getList() {
@@ -137,7 +136,7 @@ public class LambdaTest {
             Weather weather = new Weather();
             weather.setId(i);
             weather.setCity("zz" + i);
-            map.put(i,weather);
+            map.put(i, weather);
         }
         return map;
     }

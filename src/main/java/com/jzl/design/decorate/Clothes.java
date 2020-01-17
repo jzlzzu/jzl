@@ -6,11 +6,11 @@ package com.jzl.design.decorate;
  * @Date: Created in 12:48 2019/3/27
  * @Modified By:
  */
-public class Clothes extends Person{
+public class Clothes extends Person {
 
     private Person person;
 
-    public Clothes(){
+    public Clothes() {
 
     }
 
@@ -20,7 +20,7 @@ public class Clothes extends Person{
 
     @Override
     public void show() {
-        if(person != null){
+        if (person != null) {
             person.show();
         }
     }

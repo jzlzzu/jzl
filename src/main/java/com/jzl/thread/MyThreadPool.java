@@ -30,11 +30,11 @@ public class MyThreadPool {
     private static long keepAliveTime = 30000;
 
     private static final ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime,
-            TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100),new ThreadPoolExecutor.DiscardOldestPolicy());
+            TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100), new ThreadPoolExecutor.DiscardOldestPolicy());
 
 
     public static void main(String[] args) {
-        for(;;){
+        for (; ; ) {
             //设置allowCoreThreadTimeout=true（默认false）时，核心线程会超时关闭
             threadPoolExecutor.allowCoreThreadTimeOut(true);
             //没有返回值

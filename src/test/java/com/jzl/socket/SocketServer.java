@@ -19,10 +19,10 @@ public class SocketServer {
     public void receive() throws IOException {
         ServerSocket serverSocket = new ServerSocket(6066);
         serverSocket.setSoTimeout(10000);
-        while (true){
-            System.out.println("等待远程连接,端口号为 : "+ serverSocket.getLocalPort());
+        while (true) {
+            System.out.println("等待远程连接,端口号为 : " + serverSocket.getLocalPort());
             Socket socket = serverSocket.accept();
-            System.out.println("远程主机地址 : "+socket.getRemoteSocketAddress());
+            System.out.println("远程主机地址 : " + socket.getRemoteSocketAddress());
             DataInputStream dataInputStream = new DataInputStream(socket.getInputStream());
             System.out.println(dataInputStream.readUTF());
             DataOutputStream dataOutputStream = new DataOutputStream(socket.getOutputStream());

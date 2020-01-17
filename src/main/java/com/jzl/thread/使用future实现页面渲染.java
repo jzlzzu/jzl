@@ -18,7 +18,7 @@ public class 使用future实现页面渲染 {
     static void renderPage() throws ExecutionException, InterruptedException {
         ExecutorCompletionService<String> executorCompletionService = new ExecutorCompletionService(executorService);
 
-        executorCompletionService.submit(()->{
+        executorCompletionService.submit(() -> {
 
             System.out.println("执行任务逻辑");
             return "ok";
@@ -39,11 +39,9 @@ public class 使用future实现页面渲染 {
     }
 
 
-
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         renderPage();
     }
-
 
 
 }

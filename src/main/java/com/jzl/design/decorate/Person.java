@@ -17,7 +17,7 @@ public class Person {
         this.name = name;
     }
 
-    public void show(){
+    public void show() {
 
     }
 }

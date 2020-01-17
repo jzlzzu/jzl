@@ -25,7 +25,7 @@ public class CashReturn extends CashStrategy {
     double acceptCash(double money) {
         shouldMoney = money;
         System.out.println("满减销售");
-        if(money > fullMoney){
+        if (money > fullMoney) {
             shouldMoney = money - delMoney;
         }
         return shouldMoney;

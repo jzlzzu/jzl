@@ -13,7 +13,7 @@ public class Sort {
 
     public static void main(String[] args) {
 //        int[] array = {3, 5, 1, 4, 2, 7, 4, 6, 9};
-        int[] array = {2, 3, 1, 9,4,1};
+        int[] array = {2, 3, 1, 9, 4, 1};
         //冒泡排序
 //        maopao(array);
 
@@ -45,8 +45,8 @@ public class Sort {
 //            swap(array, new Random().nextInt(R - L + 1) + L, R);
             int[] p = partition(array, L, R);
             System.out.println(Arrays.toString(array));
-            quickSort(array,L,p[0]-1);
-            quickSort(array,p[1]+1,R);
+            quickSort(array, L, p[0] - 1);
+            quickSort(array, p[1] + 1, R);
         }
 
     }
@@ -56,8 +56,8 @@ public class Sort {
         int basic = arr[R];
         int less = L - 1;
         int more = R + 1;
-        while(L < more) {
-            if(arr[L] < basic) {
+        while (L < more) {
+            if (arr[L] < basic) {
                 swap(arr, ++less, L++);
             } else if (arr[L] > basic) {
                 swap(arr, --more, L);
@@ -66,7 +66,7 @@ public class Sort {
             }
         }
 
-        return new int[] { less + 1, more - 1 };
+        return new int[]{less + 1, more - 1};
 
     }
 
@@ -121,7 +121,7 @@ public class Sort {
             int minIndex = i;
             for (int j = i + 1; j < nums.length; j++) {
                 // 找到最小数值的下标
-                if(nums[j] < nums[minIndex]){
+                if (nums[j] < nums[minIndex]) {
                     minIndex = j;
                 }
             }
