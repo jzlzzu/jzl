@@ -20,6 +20,16 @@ spring:
     username: admin
     password: admin
     virtual-host: /jzl
+  redis:
+    lettuce:
+      pool:
+        max-active: 100
+        max-idle: 8
+        min-idle: 2
+        max-wait: 500ms
+    host: 10.121.198.102
+    database: 0
+    port: 6379
 mybatis-plus:
   mapper-locations: classpath*:mybatis/*.xml
   type-aliases-package: com.jzl.entity

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Enumeration;
 import java.util.HashMap;
 
 /**
@@ -57,6 +58,9 @@ public class JzlController {
 
 
         String method = request.getMethod();
+        Enumeration<String> headerNames = request.getHeaderNames();
+
+
 
         System.out.println(config.getJzl());
         String path = new ClassPathResource("server.keystore").getPath();
