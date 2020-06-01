@@ -21,6 +21,7 @@ public class JDKProxyTest {
      * 匿名内部类方式
      */
     private static void niming() {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         ChaseGirlFriend chaseGirlFriendService = new ChaseGirlFriendServiceImpl();
         ChaseGirlFriend proxy = (ChaseGirlFriend) Proxy.newProxyInstance(chaseGirlFriendService.getClass().getClassLoader(), new Class[]{ChaseGirlFriend.class}, new InvocationHandler() {
             @Override

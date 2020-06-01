@@ -1,6 +1,9 @@
 package com.jzl.redis;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jzl.entity.Tree;
 import lombok.SneakyThrows;
 import org.apache.http.Header;
 import org.apache.http.message.BasicHeader;
@@ -13,6 +16,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Author: jzl
@@ -26,6 +30,34 @@ public class TestRedis {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Test
+    public void commonTest() {
+        ArrayList<Tree> trees = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            Tree tree = new Tree();
+            tree.setColor("red"+i);
+            tree.setHigh("10m");
+            trees.add(tree);
+        }
+
+        // map
+        HashMap<String, String> redisMap = new HashMap<>();
+        redisMap.put("a1","oleh");
+        redisMap.put("a2","oleh");
+        redisMap.put("a3","oleh");
+
+        Map<String, Object> collect = trees.stream().collect(Collectors.toMap(tree -> tree.getColor(), tree -> JSON.toJSONString(tree)));
+        redisTemplate.opsForHash().putAll("jzl_map",collect);
+
+        String[] arr = new String[3];
+        arr[0] = "a1";
+        arr[1] = "a2";
+        arr[2] = "a3";
+        redisTemplate.opsForHash().delete("jzl_map",arr);
+        System.out.println(redisTemplate.opsForHash().get("jzl_map","jzl"));
+
+    }
 
     @Test
     @SneakyThrows

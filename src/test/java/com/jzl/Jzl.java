@@ -10,6 +10,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
+import org.springframework.util.Assert;
 
 import javax.tools.JavaCompiler;
 import java.io.*;
@@ -22,9 +23,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: jzl
@@ -180,6 +184,9 @@ public class Jzl {
 
     @Test
     public void complicatedexpression_r() {
+
+
+
         BigDecimal a = new BigDecimal(5);
         BigDecimal b = new BigDecimal(6);
         BigDecimal divide = a.divide(b, 4, RoundingMode.HALF_UP);
@@ -206,4 +213,25 @@ public class Jzl {
         System.out.println(now.toString());
 
     }
+
+    @Test
+    public void testBlockingQueue() throws InterruptedException {
+
+        ArrayBlockingQueue queue = new ArrayBlockingQueue<>(3);
+        queue.add("a");
+        queue.put("b");
+        queue.offer("c");
+
+        System.out.println(System.currentTimeMillis());
+        queue.offer("d",10, TimeUnit.MILLISECONDS);
+        System.out.println(queue);
+
+    }
+
+    @Test
+    public void testArrayList() {
+        ArrayList<String> list = new ArrayList<>();
+        Assert.notEmpty(list,"kong------");
+    }
+
 }

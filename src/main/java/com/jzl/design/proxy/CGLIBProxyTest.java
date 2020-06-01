@@ -1,5 +1,6 @@
 package com.jzl.design.proxy;
 
+import org.springframework.cglib.core.DebuggingClassWriter;
 import org.springframework.cglib.proxy.InvocationHandler;
 import org.springframework.cglib.proxy.Proxy;
 
@@ -13,6 +14,7 @@ import java.lang.reflect.Method;
  */
 public class CGLIBProxyTest {
     public static void main(String[] args) {
+        System.setProperty(DebuggingClassWriter.DEBUG_LOCATION_PROPERTY, "C:\\jzl\\jzl\\com\\sun\\proxy");
         ChaseGirlFriend chaseGirlFriend = new ChaseGirlFriendServiceImpl();
         ChaseGirlFriend proxyInstance = (ChaseGirlFriend) Proxy.newProxyInstance(chaseGirlFriend.getClass().getClassLoader(), new Class[]{ChaseGirlFriend.class}, new InvocationHandler() {
             @Override

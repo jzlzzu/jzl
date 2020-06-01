@@ -3,6 +3,7 @@ package com.jzl.config;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,6 +18,9 @@ import java.util.Properties;
 @Configuration
 @MapperScan("com.jzl.mapper")
 public class MybatisPlusConfig {
+
+    @Value("${jzl}")
+    private String str;
     /**
      * 分页插件 : 物理分页
      */
@@ -25,6 +29,7 @@ public class MybatisPlusConfig {
 
     public PaginationInterceptor paginationInterceptor() {
 
+        System.out.println(str);
         return new PaginationInterceptor();
 
     }

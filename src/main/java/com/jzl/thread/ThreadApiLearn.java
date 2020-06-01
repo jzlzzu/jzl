@@ -17,11 +17,13 @@ public class ThreadApiLearn {
 
     public static void main(String[] args) throws Exception {
 
-        learnCountDownLatch();
+//        learnCountDownLatch();
 
         // 使用wait 和 notify实现 生产者 消费者线程
 //        learnWaitNotify();
+
     }
+
 
     /**
      * 一个CountDownLatch会通过一个给定的count数来被初始化。其中await()方法会一直阻塞，直到当前的count被减到0，
@@ -117,4 +119,6 @@ public class ThreadApiLearn {
         });
         t2.start();
     }
+
 }
+

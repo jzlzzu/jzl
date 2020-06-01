@@ -85,6 +85,7 @@ public class TestMybatisPlus {
     public void testInsert() {
         Weather weather = new Weather();
         weather.setWeather("olleh");
+        weather.setTemperature("123");
         Integer integer = weatherMapper.customInsertSelective(weather);
         System.out.println(integer);
         System.out.println(weather.getId());

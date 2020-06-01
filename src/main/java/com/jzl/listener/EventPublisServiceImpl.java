@@ -27,7 +27,9 @@ public class EventPublisServiceImpl implements ApplicationContextAware {
     public void publishEvent(){
         // 发布事件
         MyEvent event = new MyEvent("source","HELLO I AM A EVENT");
+        System.out.println("事件执行开始");
         applicationContext.publishEvent(event);
+        System.out.println("事件执行结束");
     }
 
 }

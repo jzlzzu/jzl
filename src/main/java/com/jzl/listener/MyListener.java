@@ -2,6 +2,7 @@ package com.jzl.listener;
 
 import com.jzl.listener.event.MyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class MyListener {
 
     @EventListener
+    @Async
     public void onApplicationEvent(MyEvent myEvent) {
         System.out.println("监听器触发,监听数据" + myEvent.getEventStr());
     }

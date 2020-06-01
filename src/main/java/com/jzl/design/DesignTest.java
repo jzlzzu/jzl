@@ -7,6 +7,7 @@ import com.jzl.design.decorate.Person;
 import com.jzl.design.simplefactory.Calculator;
 import com.jzl.design.simplefactory.CalculatorFactory;
 import com.jzl.design.strategy.CashContext;
+import com.jzl.design.template.RedisLockUtil;
 import org.junit.Test;
 
 /**

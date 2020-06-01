@@ -10,6 +10,7 @@ import org.junit.Test;
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author: jzl
@@ -62,10 +63,37 @@ public class LambdaTest {
     }
 
     @Test
-    public void testMap() throws IOException {
-        Map<Integer, Weather> map = getMap();
+    public void testReview() throws IOException {
+        ArrayList<Weather> list = getList();
+        // 获取 id列表
+        List<Integer> ids = list.stream().map(weather -> weather.getId()).collect(Collectors.toList());
+        System.out.println(ids);
 
-        System.out.println("cccccccccccccccccccc");
+        // 判断id是否都为1
+        List<Weather> weatherId1 = list.stream().filter(weather -> weather.getId() == 1).collect(Collectors.toList());
+
+        System.out.println("weatherId1" + weatherId1);
+
+        // 找出最大 id
+
+        String maxId = list.stream().max(Comparator.comparingInt(Weather::getId)).toString();
+        System.out.println("maxId" + maxId);
+
+        // List转Map
+        Map<Integer, String> map = list.stream().collect(Collectors.toMap(Weather::getId, Weather::getCity));
+        System.out.println("map" + map);
+
+        // 找到id为1 的天气
+
+        // 按照id的降序列出所有天气信息
+        List<Weather> desc = list.stream().sorted((o1,o2)->Integer.compare(o2.getId(),o1.getId())).collect(Collectors.toList());
+        System.out.println("desc" + desc);
+
+        // 按照id的升序列出所有天气信息
+        List<Weather> asc = list.stream().sorted(Comparator.comparingInt(Weather::getId)).collect(Collectors.toList());
+        System.out.println("asc" + asc);
+
+        // 获取平均id
 
 
     }
@@ -73,10 +101,9 @@ public class LambdaTest {
     @Test
     public void name() {
 
-        // 截取字符串得到 10086
-        String str = "aritcle:10086";
-        String substring = str.substring(str.indexOf(":") + 1);
-        System.out.println(substring);
+        ArrayList<Weather> list = getList();
+        List<String> collect = list.stream().map(weather -> weather.getCity().toUpperCase()).collect(Collectors.toList());
+
 
 
     }
@@ -113,8 +140,8 @@ public class LambdaTest {
         // 排序
         Collections.sort(list, Comparator.comparingInt(Weather::getId));
         // colect
-
-
+        List<Weather> collect = list.stream().filter(e -> e.getId() > 1).collect(Collectors.toList());
+        System.out.println(collect);
     }
 
 

@@ -1,6 +1,8 @@
 package com.jzl.thread;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 
 /**
  * @Author: jzl
@@ -13,5 +15,16 @@ public class MyCallable implements Callable {
     public Object call() throws Exception {
         System.out.println("I am callable");
         return "callable";
+    }
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        MyCallable myCallable = new MyCallable();
+        FutureTask futureTask = new FutureTask<>(myCallable);
+        new Thread(futureTask,"A").start();
+        // 第二次并不会执行
+        new Thread(futureTask,"B").start();
+
+        System.out.println(futureTask.get());
+
     }
 }
