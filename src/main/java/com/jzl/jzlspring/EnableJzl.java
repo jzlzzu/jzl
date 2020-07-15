@@ -15,6 +15,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Import(MyImportSelector.class)
+@Import(MyRegistar.class)
 public @interface EnableJzl {
 }

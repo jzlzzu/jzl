@@ -49,6 +49,17 @@
 
 
     </select>
+    <select id="selectByWeatherList" resultType="com.jzl.entity.Weather" parameterType="com.jzl.entity.OoBean">
+        select
+        <include refid="Base_Column_Sql"/>
+        from
+        `weather`
+        where id in
+        <foreach collection="ooBean.ids" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+
+    </select>
 
     <insert id="customInsertSelective" parameterType="com.jzl.entity.Weather" useGeneratedKeys="true" keyProperty="id"
             keyColumn="id">

@@ -19,6 +19,9 @@ import java.lang.annotation.Target;
 @Aspect
 public class LogAspect {
 
+    /**
+     * 切点
+     */
     @Pointcut("execution(* com.jzl.controller..*.*(..))")
     public void method() {
 

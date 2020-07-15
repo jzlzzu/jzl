@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jzl.entity.OoBean;
 import com.jzl.entity.Weather;
 import com.jzl.mapper.master.WeatherMapper;
 import org.junit.Test;
@@ -138,5 +139,18 @@ public class TestMybatisPlus {
     public void testJzl() {
         Weather weather = weatherMapper.testJzl(1, "郑州");
         System.out.println(weather);
+    }
+
+    @Test
+    public void testOom() {
+        OoBean bean = new OoBean();
+        ArrayList<String> ids = new ArrayList<>();
+        ids.add("1");
+        ids.add("2");
+        bean.setIds(ids);
+
+        bean.setName("olleh");
+        List<Weather> weathers = weatherMapper.selectByWeatherList("12",bean);
+        System.out.println(weathers);
     }
 }

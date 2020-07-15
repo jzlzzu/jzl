@@ -234,4 +234,22 @@ public class Jzl {
         Assert.notEmpty(list,"kong------");
     }
 
+    @Test
+    public void testFormat() {
+
+        String a = "olleh";
+        String b = "oll";
+        String c = "oll" + new String("eh");
+
+        System.out.println(a == c);
+        char ch = '\ubc4f';
+        System.out.println(ch);
+//        Double d = 40;
+        int i = 100;
+//        float f = 32.00;
+
+        String str = "http://%s:%s";
+        String format = String.format(str, "127.0.0.1", "8080");
+        System.out.println(format);
+    }
 }

@@ -1,16 +1,17 @@
 package com.jzl.lambda;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.NoLombok;
 import com.jzl.entity.Weather;
 import org.junit.Test;
+import org.springframework.boot.json.JacksonJsonParser;
 
 import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @Author: jzl
@@ -144,8 +145,38 @@ public class LambdaTest {
         System.out.println(collect);
     }
 
+    /**
+     * list json objectmapper
+     * @throws IOException
+     */
+    @Test
+    public void TestListJson() throws IOException {
+        ArrayList<Weather> list = getList();
+        ObjectMapper mapper = new ObjectMapper();
+        String json = mapper.writeValueAsString(list);
 
-    private ArrayList<Weather> getList() {
+        JsonNode jsonNode = mapper.readTree(json);
+
+        System.out.println(jsonNode.toString());
+
+        JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, Weather.class);
+        ArrayList<Weather> weathers = mapper.readValue(jsonNode.toString(), javaType);
+        weathers.stream().forEach(l-> System.out.println(l));
+
+        JacksonJsonParser jacksonJsonParser = new JacksonJsonParser();
+        List<Object> objects = jacksonJsonParser.parseList(jsonNode.toString());
+        objects.stream().forEach(l-> System.out.println(l));
+
+        ObjectMapper mapper1 = new ObjectMapper();
+        List<Weather> o = mapper1.convertValue(jsonNode, new TypeReference<List<Weather>>() {
+        });
+
+
+
+        System.out.println("1111");
+    }
+
+    public static ArrayList<Weather> getList() {
         ArrayList<Weather> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Weather weather = new Weather();

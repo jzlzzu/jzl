@@ -84,6 +84,21 @@ public class JzlController {
         return "getCC";
     }
 
+    @GetMapping("getr")
+    public void jzlResponse() throws IOException {
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("response_status", "401");
+        ObjectMapper mapper = new ObjectMapper();
+        OutputStream os = response.getOutputStream();
+        os.write(mapper.writeValueAsBytes(map));
+        response.setHeader("Content-Type","application/json");
+        response.setHeader("jzl-Type","application/json");
+
+//        response.sendRedirect("/jzl/get1");
+
+    }
+
     /**
      *  测试发布事件 触发监听器
      */

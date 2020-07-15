@@ -2,6 +2,7 @@ package com.jzl.mapper.master;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jzl.entity.OoBean;
 import com.jzl.entity.Weather;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -24,6 +25,7 @@ public interface WeatherMapper extends BaseMapper<Weather> {
 
     List<Weather> selectByWeather(Weather weather);
 
+    List<Weather> selectByWeatherList(@Param("age") String age ,@Param("ooBean") OoBean ooBean);
 
     Integer customInsertSelective(Weather weather);
 

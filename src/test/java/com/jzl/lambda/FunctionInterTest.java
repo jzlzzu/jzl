@@ -1,8 +1,11 @@
 package com.jzl.lambda;
 
+import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
+import com.jzl.entity.Weather;
 import org.junit.Test;
 import org.springframework.beans.factory.ObjectFactory;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -34,4 +37,11 @@ public class FunctionInterTest {
         System.out.println("=----------------++++++++");
 
     }
+
+    @Test
+    public void testConsumers() {
+        ArrayList<Weather> list = LambdaTest.getList();
+    }
+
+
 }
