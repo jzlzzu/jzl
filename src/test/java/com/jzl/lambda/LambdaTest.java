@@ -168,8 +168,7 @@ public class LambdaTest {
         objects.stream().forEach(l-> System.out.println(l));
 
         ObjectMapper mapper1 = new ObjectMapper();
-        List<Weather> o = mapper1.convertValue(jsonNode, new TypeReference<List<Weather>>() {
-        });
+        List<Weather> o = mapper1.convertValue(jsonNode, new TypeReference<List<Weather>>() {});
 
 
 

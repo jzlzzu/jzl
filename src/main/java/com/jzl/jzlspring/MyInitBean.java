@@ -14,5 +14,6 @@ public class MyInitBean implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         //
+        System.out.println("bean创建完成之后 , 执行set方法");
     }
 }

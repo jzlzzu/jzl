@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.Tree;
 import com.jzl.entity.Weather;
+import com.jzl.jzlspring.AutowiredType;
 import com.jzl.utils.HttpClientUtil;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONException;
@@ -14,6 +15,9 @@ import org.springframework.util.Assert;
 
 import javax.tools.JavaCompiler;
 import java.io.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
@@ -251,5 +255,16 @@ public class Jzl {
         String str = "http://%s:%s";
         String format = String.format(str, "127.0.0.1", "8080");
         System.out.println(format);
+    }
+
+    @Test
+    public void reflect() throws Exception {
+        Class<?> aClass = Class.forName(Weather.class.getName());
+        Object newInstance = aClass.getDeclaredConstructor().newInstance();
+        Field id = aClass.getDeclaredField("city");
+        id.setAccessible(true);
+        id.set(newInstance,"日本");
+        System.out.println(newInstance);
+
     }
 }

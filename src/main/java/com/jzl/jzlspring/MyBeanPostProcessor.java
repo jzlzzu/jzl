@@ -15,12 +15,13 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         // 后置处理器 可以对bean随意修改 比如 bean = new ...;
-        System.out.println("--------------MyBeanPostProcessor-------------");
+//        System.out.println("--------------MyBeanPostProcessor---postProcessBeforeInitialization----------");
         return null;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+//        System.out.println("--------------MyBeanPostProcessor----postProcessAfterInitialization---------");
         return null;
     }
 }
