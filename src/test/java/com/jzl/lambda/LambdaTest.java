@@ -1,11 +1,13 @@
 package com.jzl.lambda;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.NoLombok;
 import com.jzl.entity.Weather;
+import com.jzl.entity.Weather1;
 import org.junit.Test;
 import org.springframework.boot.json.JacksonJsonParser;
 
@@ -173,6 +175,21 @@ public class LambdaTest {
 
 
         System.out.println("1111");
+    }
+
+    /**
+     * json转换时, 字符串的key要和对象中的一一对应 , 对象中不能缺少对应字段
+     * @throws Exception
+     */
+    @Test
+    public void testJson() throws Exception {
+        Weather weather = new Weather();
+        weather.setId(1);
+        weather.setCity("olleh");
+        ObjectMapper mapper = new ObjectMapper();
+        String s = mapper.writeValueAsString(weather);
+        Weather1 weather1 = mapper.readValue(s, Weather1.class);
+        System.out.println(weather1);
     }
 
     public static ArrayList<Weather> getList() {

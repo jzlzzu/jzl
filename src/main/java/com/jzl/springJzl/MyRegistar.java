@@ -1,4 +1,4 @@
-package com.jzl.jzlspring;
+package com.jzl.springJzl;
 
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;

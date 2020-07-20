@@ -1,36 +1,25 @@
 package com.jzl;
 
 import com.alibaba.fastjson.JSON;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.Tree;
 import com.jzl.entity.Weather;
-import com.jzl.jzlspring.AutowiredType;
 import com.jzl.utils.HttpClientUtil;
-import org.apache.http.impl.client.HttpClients;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
-import javax.tools.JavaCompiler;
 import java.io.*;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -257,14 +246,26 @@ public class Jzl {
         System.out.println(format);
     }
 
+    /**
+     * 测试反射相关方法
+     * @throws Exception
+     */
     @Test
     public void reflect() throws Exception {
         Class<?> aClass = Class.forName(Weather.class.getName());
         Object newInstance = aClass.getDeclaredConstructor().newInstance();
-        Field id = aClass.getDeclaredField("city");
-        id.setAccessible(true);
-        id.set(newInstance,"日本");
+        Field city = aClass.getDeclaredField("city");
+        city.setAccessible(true);
+        city.set(newInstance,"日本");
         System.out.println(newInstance);
+
+    }
+
+    /**
+     * 研究一下反射的API
+     */
+    @Test
+    public void testReflect() {
 
     }
 }

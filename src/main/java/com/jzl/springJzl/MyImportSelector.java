@@ -1,7 +1,6 @@
-package com.jzl.jzlspring;
+package com.jzl.springJzl;
 
 import com.jzl.entity.Tree;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.ImportSelector;
 import org.springframework.core.type.AnnotationMetadata;
 

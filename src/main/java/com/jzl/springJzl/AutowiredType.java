@@ -1,4 +1,4 @@
-package com.jzl.jzlspring;
+package com.jzl.springJzl;
 
 import com.jzl.service.AutowiredTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class AutowiredType {
 
+    /**
+     *  1. 反射获取Filed类 , 然后赋值
+     */
 //    @Autowired
     private AutowiredTypeService autowiredTypeService;
 
-    @Autowired
+    /**
+     * 2. 反射获取构造方法,然后赋值
+     * @param autowiredTypeService
+     */
     public AutowiredType(AutowiredTypeService autowiredTypeService) {
         System.out.println("---构造方法---");
         this.autowiredTypeService = autowiredTypeService;
     }
 
+    /**
+     * 反射获取set方法 , 然后赋值
+     * @param autowiredTypeService
+     */
 //    @Autowired
     public void setAutowiredTypeService(AutowiredTypeService autowiredTypeService) {
         System.out.println("set方法 setAutowiredTypeService 执行");
