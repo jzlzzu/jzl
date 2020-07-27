@@ -3,6 +3,7 @@ package com.jzl.thread;
 import com.jzl.entity.Weather;
 import org.junit.Test;
 
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicStampedReference;
 
@@ -13,6 +14,15 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  * @Modified By:
  */
 public class MyAtomicIntegerTest {
+
+    private final AtomicBoolean refreshed = new AtomicBoolean();
+
+    @Test
+    public void testAtomicBoolean() {
+        if(this.refreshed.compareAndSet(false,true)){
+            System.out.println("--------");
+        }
+    }
 
     @Test
     public void testAtomicInteger() {
