@@ -174,6 +174,7 @@ public class LambdaTest {
 
 
 
+
         System.out.println("1111");
     }
 
@@ -191,6 +192,8 @@ public class LambdaTest {
         Weather1 weather1 = mapper.readValue(s, Weather1.class);
         System.out.println(weather1);
     }
+
+
 
     public static ArrayList<Weather> getList() {
         ArrayList<Weather> list = new ArrayList<>();

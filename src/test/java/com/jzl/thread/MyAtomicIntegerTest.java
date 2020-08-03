@@ -47,6 +47,6 @@ public class MyAtomicIntegerTest {
 
         System.out.println(objectAtomicStampedReference.getReference());
 
-
     }
+
 }
