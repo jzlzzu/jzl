@@ -16,11 +16,14 @@ import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -210,21 +213,35 @@ public class Jzl {
     @Test
     public void testBlockingQueue() throws InterruptedException {
 
-        ArrayBlockingQueue queue = new ArrayBlockingQueue<>(3);
-        queue.add("a");
-        queue.put("b");
-        queue.offer("c");
+        ArrayBlockingQueue<String> queue = new ArrayBlockingQueue<>(2);
+        // 容量不足抛出异常
+        queue.add("1");
+        // 容量不足 阻塞
+        queue.put("2");
+        queue.offer("3",10,TimeUnit.MILLISECONDS);
 
-        System.out.println(System.currentTimeMillis());
-        queue.offer("d",10, TimeUnit.MILLISECONDS);
-        System.out.println(queue);
+        String peek = queue.peek();
+        String take = queue.take();
+        String poll = queue.poll();
+
+        queue.element();
+
+
 
     }
 
     @Test
     public void testArrayList() {
         ArrayList<String> list = new ArrayList<>();
-        Assert.notEmpty(list,"kong------");
+//        Assert.notEmpty(list,"kong------");
+
+        String str = "#\\{hello}";
+        String js = "#{123}----#{hello}";
+        String s = js.replaceAll(str, "12345");
+        System.out.println(js);
+        System.out.println(s);
+        Assert.isNull(list,"list 为空");
+        Assert.isTrue(false,"jfidajiodfsjisddsoji");
     }
 
     @Test
@@ -244,6 +261,18 @@ public class Jzl {
         String str = "http://%s:%s";
         String format = String.format(str, "127.0.0.1", "8080");
         System.out.println(format);
+
+        switch ("aa"){
+            case "ab":
+                System.out.println("ab");
+            case "aa":
+                System.out.println("aa");
+            case "ac":
+                System.out.println("ac");
+            case "ad":
+                System.out.println("ad");
+        }
+
     }
 
     /**

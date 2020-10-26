@@ -69,7 +69,6 @@ public class IoFile {
         fileOutputStream.flush();
         fileOutputStream.close();
     }
-
     private static void bufferedInputStream() throws IOException {
         //减少磁盘io操作
         BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(new File("c:\\jzl\\io.txt")));

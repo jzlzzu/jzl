@@ -25,6 +25,7 @@ public class MyCallable implements Callable {
         new Thread(futureTask,"B").start();
 
         System.out.println(futureTask.get());
+        System.out.println(futureTask.get());
 
     }
 }

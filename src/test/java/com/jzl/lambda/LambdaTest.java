@@ -10,6 +10,7 @@ import com.jzl.entity.Weather;
 import com.jzl.entity.Weather1;
 import org.junit.Test;
 import org.springframework.boot.json.JacksonJsonParser;
+import org.springframework.core.ParameterizedTypeReference;
 
 import java.io.IOException;
 import java.util.*;
@@ -107,8 +108,6 @@ public class LambdaTest {
         ArrayList<Weather> list = getList();
         List<String> collect = list.stream().map(weather -> weather.getCity().toUpperCase()).collect(Collectors.toList());
 
-
-
     }
 
     @Test
@@ -170,6 +169,7 @@ public class LambdaTest {
         objects.stream().forEach(l-> System.out.println(l));
 
         ObjectMapper mapper1 = new ObjectMapper();
+//        new ParameterizedTypeReference<>()
         List<Weather> o = mapper1.convertValue(jsonNode, new TypeReference<List<Weather>>() {});
 
 

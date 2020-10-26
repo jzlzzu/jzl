@@ -1,6 +1,7 @@
 package com.jzl.listener;
 
 import com.jzl.listener.event.MyEvent;
+import com.jzl.service.impl.JzlServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -17,6 +18,9 @@ import org.springframework.stereotype.Service;
 public class EventPublisServiceImpl implements ApplicationContextAware {
 
     @Autowired
+    JzlServiceImpl jzlServiceImpl;
+
+    @Autowired
     private ApplicationContext applicationContext;
 
     @Override
@@ -25,6 +29,7 @@ public class EventPublisServiceImpl implements ApplicationContextAware {
     }
 
     public void publishEvent(){
+        jzlServiceImpl.test1();
         // 发布事件
         MyEvent event = new MyEvent("source","HELLO I AM A EVENT");
         System.out.println("事件执行开始");

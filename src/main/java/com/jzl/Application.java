@@ -7,6 +7,7 @@ import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
@@ -28,6 +29,12 @@ public class Application {
         SpringApplication.run(Application.class);
     }
 
+    @Bean
+    public DefaultListableBeanFactory defaultListableBeanFactory(DefaultListableBeanFactory defaultListableBeanFactory) {
+        defaultListableBeanFactory.getBean("jzlServiceImpl");
+//        defaultListableBeanFactory.setAllowCircularReferences(false);
+        return defaultListableBeanFactory;
+    }
 
     /**
      * 配置https 80端口重定向到8080
@@ -66,5 +73,7 @@ public class Application {
         tomcat.addAdditionalTomcatConnectors(connector);
         return tomcat;
     }
+
+
 
 }

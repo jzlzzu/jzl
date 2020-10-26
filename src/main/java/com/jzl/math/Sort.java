@@ -15,7 +15,7 @@ public class Sort {
 //        int[] array = {3, 5, 1, 4, 2, 7, 4, 6, 9};
         int[] array = {2, 3, 1, 9, 4, 1};
         //冒泡排序
-//        maopao(array);
+        maopao(array);
 
 
         //简单选择排序: 第一次遍历: 选择最小的,把最小的和最左侧交换
@@ -28,7 +28,7 @@ public class Sort {
 
 
         // 快速排序
-        quickSort(array, 0, array.length - 1);
+//        quickSort(array, 0, array.length - 1);
 
 
         // partition
