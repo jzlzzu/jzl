@@ -21,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
@@ -84,6 +85,8 @@ public class Jzl {
         String substring = str.substring(i);
         System.out.println(substring);
 
+        System.out.println("substring".substring(substring.length()));
+
         System.out.println(System.getProperty("user.dir"));
 
 
@@ -129,8 +132,7 @@ public class Jzl {
 
     @Test
     public void testExecption() {
-        String str =
-                "";
+        String str ="abc";
         String[] split = str.split(",");
 
         System.out.print(str.split(",").length);
@@ -295,6 +297,12 @@ public class Jzl {
      */
     @Test
     public void testReflect() {
+        System.out.println(Arrays.asList("1,2,3,4,5"));
+    }
 
+    @Test
+    public void testCompare() {
+        Integer a = 0;
+        System.out.println(a.compareTo(Integer.valueOf(0)));
     }
 }

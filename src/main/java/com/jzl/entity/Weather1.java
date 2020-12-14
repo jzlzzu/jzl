@@ -15,6 +15,8 @@ public class Weather1 implements Serializable {
     private Integer id;
     private String province;
     private String time;
+//    private String city;
+//    private String city1;
     private String weather;
     private String temperature;
     private String wind;

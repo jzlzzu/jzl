@@ -9,7 +9,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jzl.entity.OoBean;
+import com.jzl.entity.Student;
 import com.jzl.entity.Weather;
+import com.jzl.mapper.master.StudentMapper;
 import com.jzl.mapper.master.WeatherMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +39,9 @@ public class TestMybatisPlus {
 
     @Autowired
     private WeatherMapper weatherMapper;
+
+    @Autowired
+    private StudentMapper studentMapper;
 
 
     @Test
@@ -116,9 +122,10 @@ public class TestMybatisPlus {
     @Test
     public void testUpdate() {
         Weather weather = new Weather();
-        weather.setWeather("hello");
-        weather.setId(10019);
-        weatherMapper.customeUpdateById(weather);
+        weather.setWeather("ccccccc");
+        weather.setId(10001);
+        weatherMapper.updateById(weather);
+//        weatherMapper.customeUpdateById(weather);
     }
 
     @Test
@@ -152,5 +159,15 @@ public class TestMybatisPlus {
         bean.setName("olleh");
         List<Weather> weathers = weatherMapper.selectByWeatherList("12",bean);
         System.out.println(weathers);
+    }
+
+    @Test
+    public void testStudent() {
+//        Student student = studentMapper.selectOne(new LambdaQueryWrapper<Student>().eq(Student::getId, 4).and(w -> w.eq(Student::getName, 35).or().eq(Student::getAge, 24)));
+//        System.out.println("st-----" + student);
+//        List<Student> students = studentMapper.queryByDate(new Date());
+//        students.stream().forEach(s -> System.out.println(s));
+        Student student = studentMapper.selectById(5);
+        System.out.println(student);
     }
 }

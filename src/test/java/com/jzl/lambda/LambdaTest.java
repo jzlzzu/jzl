@@ -1,7 +1,9 @@
 package com.jzl.lambda;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -156,9 +158,12 @@ public class LambdaTest {
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(list);
 
+        //
+        List<Weather1> weather1s = JSON.parseArray(json, Weather1.class);
+
         JsonNode jsonNode = mapper.readTree(json);
 
-        System.out.println(jsonNode.toString());
+        System.out.println(jsonNode);
 
         JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, Weather.class);
         ArrayList<Weather> weathers = mapper.readValue(jsonNode.toString(), javaType);
@@ -169,10 +174,12 @@ public class LambdaTest {
         objects.stream().forEach(l-> System.out.println(l));
 
         ObjectMapper mapper1 = new ObjectMapper();
+        mapper1.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
 //        new ParameterizedTypeReference<>()
-        List<Weather> o = mapper1.convertValue(jsonNode, new TypeReference<List<Weather>>() {});
+        List<Weather1> o = mapper1.convertValue(jsonNode, new TypeReference<List<Weather1>>() {});
+        System.out.println(o);
 
-
+        List<Weather1> weather1s1 = JSON.parseArray(json, Weather1.class);
 
 
         System.out.println("1111");
@@ -188,6 +195,7 @@ public class LambdaTest {
         weather.setId(1);
         weather.setCity("olleh");
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
         String s = mapper.writeValueAsString(weather);
         Weather1 weather1 = mapper.readValue(s, Weather1.class);
         System.out.println(weather1);

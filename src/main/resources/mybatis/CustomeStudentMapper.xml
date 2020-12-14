@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jzl.mapper.master.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.jzl.entity.Student">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
+        <result column="date" jdbcType="DATE" property="date"/>
+        <result column="timestamp" jdbcType="TIMESTAMP" property="timestamp"/>
+    </resultMap>
+
+    <sql id="Base_Column_Sql">
+        id,name,age,date,timestamp
+    </sql>
+
+    <select id="queryByDate" resultMap="BaseResultMap">
+        select <include refid="Base_Column_Sql"/> from student where date >= #{date}
+    </select>
+
+
+</mapper>
