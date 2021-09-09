@@ -10,7 +10,11 @@ import org.springframework.stereotype.Component;
  * @Date: Created in 9:48 2020/5/26
  * @Modified By:
  */
-@Component
+
+/**
+ * 注释原因 ： 该后置处理器导致servlet配置端口 和 上下文对象失效
+ */
+//@Component
 public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
