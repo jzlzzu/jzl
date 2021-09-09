@@ -48,7 +48,7 @@ public class Application {
         connector.setScheme("http");
         connector.setPort(80);
         connector.setSecure(false);
-        connector.setRedirectPort(8080);
+        connector.setRedirectPort(443);
         return connector;
     }
 

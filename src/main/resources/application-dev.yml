@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 443
   #不知道什么原因 context-path和ssl的配置都不生效了
   servlet:
     context-path: /jzl
