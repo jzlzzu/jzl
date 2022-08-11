@@ -95,7 +95,7 @@ public class JzlController {
         response.setHeader("Content-Type","application/json");
         response.setHeader("jzl-Type","application/json");
 
-//        response.sendRedirect("/jzl/get1");
+
 
     }
 

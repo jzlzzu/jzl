@@ -72,34 +72,30 @@ public class LambdaTest {
     public void testReview() throws IOException {
         ArrayList<Weather> list = getList();
         // 获取 id列表
-        List<Integer> ids = list.stream().map(weather -> weather.getId()).collect(Collectors.toList());
-        System.out.println(ids);
+        List<Integer> collect = list.stream().map(Weather::getId).collect(Collectors.toList());
 
         // 判断id是否都为1
-        List<Weather> weatherId1 = list.stream().filter(weather -> weather.getId() == 1).collect(Collectors.toList());
-
-        System.out.println("weatherId1" + weatherId1);
+        boolean b = list.stream().allMatch(weather -> weather.getId().equals(1));
+        System.out.println(b);
 
         // 找出最大 id
-
-        String maxId = list.stream().max(Comparator.comparingInt(Weather::getId)).toString();
-        System.out.println("maxId" + maxId);
+        Optional<Weather> max = list.stream().max((w1, w2) -> Integer.compare(w1.getId(), w2.getId()));
 
         // List转Map
-        Map<Integer, String> map = list.stream().collect(Collectors.toMap(Weather::getId, Weather::getCity));
-        System.out.println("map" + map);
+        Map<Integer, Weather> collect11 = list.stream().collect(Collectors.toMap(weather -> weather.getId(), weather -> weather));
 
         // 找到id为1 的天气
-
-        // 按照id的降序列出所有天气信息
-        List<Weather> desc = list.stream().sorted((o1,o2)->Integer.compare(o2.getId(),o1.getId())).collect(Collectors.toList());
-        System.out.println("desc" + desc);
+        List<Weather> collect2 = list.stream().filter(weather -> weather.getId().equals(1)).collect(Collectors.toList());
 
         // 按照id的升序列出所有天气信息
-        List<Weather> asc = list.stream().sorted(Comparator.comparingInt(Weather::getId)).collect(Collectors.toList());
-        System.out.println("asc" + asc);
+        List<Weather> collect3 = list.stream().sorted(Comparator.comparingInt(Weather::getId)).collect(Collectors.toList());
+
+        // 按照id的降序列出所有天气信息
+        List<Weather> collect4 = list.stream().sorted((w1, w2) -> Integer.compare(w2.getId(), w1.getId())).collect(Collectors.toList());
 
         // 获取平均id
+        Double collect5 = list.stream().collect(Collectors.averagingDouble(Weather::getId));
+        System.out.println(collect5);
 
 
     }
@@ -109,6 +105,10 @@ public class LambdaTest {
 
         ArrayList<Weather> list = getList();
         List<String> collect = list.stream().map(weather -> weather.getCity().toUpperCase()).collect(Collectors.toList());
+        Map<Integer, String> c = list.stream().collect(Collectors.toMap(Weather::getId, Weather::getCity));
+        Optional<Weather> any = list.stream().filter(w -> w.getId().equals(1000)).findAny();
+        Weather weather = any.orElseThrow(()->new RuntimeException("异常"));
+        System.out.println("olleh");
 
     }
 

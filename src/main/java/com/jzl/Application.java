@@ -1,6 +1,8 @@
 package com.jzl;
 
 
+import com.jzl.entity.Student;
+import com.jzl.service.UserDeService;
 import com.jzl.springJzl.EnableJzl;
 import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
@@ -72,6 +74,11 @@ public class Application {
         };
         tomcat.addAdditionalTomcatConnectors(connector);
         return tomcat;
+    }
+
+    @Bean
+    public UserDeService userDeService(){
+        return username -> new Student();
     }
 
 

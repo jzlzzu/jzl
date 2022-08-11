@@ -24,6 +24,10 @@ public class TestOptional {
         tree.setColor("red");
         tree.setHigh("100m");
 
+        boolean empty = Optional.ofNullable(null).isPresent();
+        boolean notempty = Optional.ofNullable(tree).isPresent();
+        System.out.println(empty);
+
 //        --------------optional设置默认值------------
 
         // tree为空时,执行并返回createTree()

@@ -1,18 +1,25 @@
 package com.jzl;
 
 import com.alibaba.fastjson.JSON;
+import com.jzl.entity.Student;
 import com.jzl.entity.Tree;
 import com.jzl.entity.Weather;
 import com.jzl.utils.HttpClientUtil;
+import org.apache.tika.Tika;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.springframework.util.Assert;
 
+import javax.activation.MimetypesFileTypeMap;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -62,7 +69,19 @@ public class Jzl {
         bufferedWriter.close();
     }
 
+    @Test
+    public void jjj() throws InterruptedException {
+        Student student = new Student();
+        new Thread(()->{
+            aa(student);
+        }).start();
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println(student);
+    }
 
+    public void aa(Student student){
+        student.setAge("123");
+    }
     @Test
     public void serialJzl() throws Exception {
         Weather weather = new Weather();
@@ -305,4 +324,39 @@ public class Jzl {
         Integer a = 0;
         System.out.println(a.compareTo(Integer.valueOf(0)));
     }
+
+    @Test
+    public void common123() {
+        File file = new File("D:\\zsnetwork\\工作\\一体化协同办公\\协同应用需求梳理.pdf");
+        MimetypesFileTypeMap fileTypeMap = new MimetypesFileTypeMap();
+        String mimeType = fileTypeMap.getContentType("file.getName()");
+        System.out.println(mimeType);
+    }
+
+    @Test
+    public void common124() throws IOException {
+        File file = new File("D:\\zsnetwork\\工作\\一体化协同办公\\协同应用需求梳理.pdf");
+        Path path = file.toPath();
+        String mimeType = Files.probeContentType(path);
+        System.out.println(mimeType);
+    }
+
+    @Test
+    public void common125() throws IOException {
+        Tika tika = new Tika();
+//        File file = new File("D:\\zsnetwork\\工作\\豫事办中台对接\\对接文档\\用户中心token交换API接口.docx");
+//        String mimeType = tika.detect(file);
+        String detect = tika.detect("D:\\zsnetwork\\工作\\豫事办中台对接\\对接文档\\用户中心token交换API接口1.pdf");
+        System.out.println(detect);
+    }
+
+    @Test
+    public void common126() throws IOException {
+        File file = new File("D:\\zsnetwork\\工作\\豫事办中台对接\\对接文档\\用户中心token交换API接口.docx");
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(file));
+        String mimeType = URLConnection.guessContentTypeFromStream(bufferedInputStream);
+        String mimeType1 = URLConnection.guessContentTypeFromName("D:\\zsnetwork\\工作\\豫事办中台对接\\对接文档\\用户中心token交换API接口.docx");
+        System.out.println(mimeType1);
+    }
+
 }
